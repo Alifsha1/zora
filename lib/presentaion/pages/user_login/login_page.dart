@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:zora/presentaion/Widgets/zora.dart';
 import 'package:zora/presentaion/pages/sign_up/signup_page.dart';
@@ -32,7 +31,12 @@ class _UserLoginState extends State<UserLogin> {
             SizedBox(
               height: mediaheight * .14,
             ),
-            UserLoginWidget(formKey: formKey, usernameController: usernameController, passwordController: passwordController, mediawidth: mediawidth),
+            UserLoginWidget(
+              formKey: formKey,
+              usernameController: usernameController,
+              passwordController: passwordController,
+              mediawidth: mediawidth,
+            ),
             SizedBox(
               height: mediaheight * .37,
             ),
@@ -48,8 +52,10 @@ class _UserLoginState extends State<UserLogin> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const SignUpPage()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SignUpPage()));
                   },
                   child: const Text(
                     'Signup',
@@ -67,5 +73,3 @@ class _UserLoginState extends State<UserLogin> {
     );
   }
 }
-
-

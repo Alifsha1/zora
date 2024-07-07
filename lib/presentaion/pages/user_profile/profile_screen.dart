@@ -3,8 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zora/core/constants/contants.dart';
-import 'package:zora/core/icons/customiconsflutter_icons.dart';
-import 'package:zora/data/models/user_model/user_model.dart';
 import 'package:zora/presentaion/bloc/user_profile/user_profile_bloc.dart';
 import 'package:zora/presentaion/pages/edit_profile/edit_profile_page.dart';
 import 'package:zora/presentaion/pages/user_profile/widgets/account_info_post.dart';
@@ -12,7 +10,6 @@ import 'package:zora/presentaion/pages/user_profile/widgets/custom_button.dart';
 import 'package:zora/presentaion/pages/user_profile/widgets/custom_tabbar.dart';
 import 'package:zora/presentaion/pages/user_profile/widgets/custom_tabbarview.dart';
 import 'package:zora/presentaion/pages/user_profile/widgets/loading_pages/profile_loading.dart';
-import 'package:zora/presentaion/pages/user_profile/widgets/loading_pages/profile_tile_loading.dart';
 import 'package:zora/presentaion/pages/user_profile/widgets/showing_profile_widget.dart';
 import 'package:zora/presentaion/pages/settings/settings_page.dart';
 

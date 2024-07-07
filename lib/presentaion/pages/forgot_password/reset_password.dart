@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// ignore: unnecessary_import
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zora/core/utils/alerts.dart';
@@ -47,7 +48,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                   height: mediaheight * .15,
                 ),
                 Textformfieldlog(
-                   label: Text('otp'),
+                   label: const Text('otp'),
                   hint: 'OTP',
                   controller: otpController,
                   validator: (val) {
@@ -59,7 +60,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 ),
                 sizedboxconst20(),
                 Textformfieldlog(
-                   label: Text('New password'),
+                   label: const Text('New password'),
                   hint: 'New password',
                   controller: passwordController,
                   validator: (val) {
@@ -72,7 +73,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 ),
                 sizedboxconst20(),
                 Textformfieldlog(
-                   label: Text('confirm password'),
+                   label: const Text('confirm password'),
                   hint: 'Confirm password',
                   controller: confirmpasswordController,
                   validator: (val) {

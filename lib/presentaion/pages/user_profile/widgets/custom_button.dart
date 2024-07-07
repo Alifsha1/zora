@@ -79,7 +79,7 @@ class CustomButtonForProfile extends StatelessWidget {
                     ),
                     kwidht10,
                     Icon(
-                      Customiconsflutter.setting_line,
+                      Customiconsflutter.settingline,
                       size: 15,
                       color: kblack,
                     ),

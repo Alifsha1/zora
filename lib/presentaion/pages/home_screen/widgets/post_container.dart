@@ -1,6 +1,5 @@
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:zora/core/constants/contants.dart';
 
 class PostContainer extends StatelessWidget {
@@ -175,7 +174,6 @@ class PostContainer extends StatelessWidget {
 
   Future<dynamic> commentBox(BuildContext context) {
     final mediawidth = MediaQuery.of(context).size.width;
-    final mediaheight = MediaQuery.of(context).size.height;
     return showModalBottomSheet(
       useSafeArea: true,
       context: context,

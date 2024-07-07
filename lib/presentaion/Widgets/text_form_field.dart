@@ -38,19 +38,19 @@ class Textformfieldlog extends StatelessWidget {
         label: label,
         suffix: suffix,
         focusedBorder:
-            OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
+            const OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
         suffixIcon: Icon(icons),
         prefixIcon: prefix,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
         ),
         hintText: hint,
-        hintStyle: TextStyle(
+        hintStyle: const TextStyle(
           color: Color.fromARGB(255, 127, 162, 194),
           fontWeight: FontWeight.bold,
         ),
         filled: true,
-        fillColor: Color.fromARGB(255, 244, 255, 255),
+        fillColor: const Color.fromARGB(255, 244, 255, 255),
       ),
     );
   }

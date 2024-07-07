@@ -1,10 +1,7 @@
-import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:zora/core/style/colors/colors.dart';
 import 'package:zora/data/models/user_model/user_model.dart';
 import 'package:zora/presentaion/Widgets/normal_bond_titles.dart';
-import 'package:zora/presentaion/Widgets/zora.dart';
 import 'package:zora/presentaion/pages/user_post_images_showing/widget/user_post_widget.dart';
 
 class UsersPostImages extends StatefulWidget {

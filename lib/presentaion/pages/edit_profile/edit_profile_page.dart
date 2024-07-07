@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zora/data/models/user_model/user_model.dart';
 import 'package:zora/presentaion/Widgets/zora.dart';
-import 'package:zora/presentaion/bloc/edit_profile/edit_profile_bloc.dart';
 import 'package:zora/presentaion/pages/edit_profile/widget/edip_profile_widget.dart';
 
 class EditProfileScreen extends StatefulWidget {

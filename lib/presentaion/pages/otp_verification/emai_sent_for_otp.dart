@@ -25,7 +25,7 @@ class _EmailForOtpState extends State<EmailForOtp> {
           child: SingleChildScrollView(
         child: Column(
           children: [
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [MainHeading(heading: 'Otp Sent')],
             ),
@@ -50,26 +50,26 @@ class _EmailForOtpState extends State<EmailForOtp> {
                       },
                       cursorColor: Colors.black,
                       decoration: InputDecoration(
-                        focusedBorder: OutlineInputBorder(
+                        focusedBorder: const OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.black)),
                         //   suffixIcon: Icon(icons),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
                         hintText: 'Email',
-                        hintStyle: TextStyle(
+                        hintStyle: const TextStyle(
                           color: Color.fromARGB(255, 127, 162, 194),
                           fontWeight: FontWeight.bold,
                         ),
                         filled: true,
-                        fillColor: Color.fromARGB(255, 244, 255, 255),
+                        fillColor: const Color.fromARGB(255, 244, 255, 255),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
 
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     BlocBuilder<SignUpBlocBloc,SignUpBlocState>(builder: (context, state) {

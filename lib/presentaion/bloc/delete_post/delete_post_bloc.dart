@@ -1,10 +1,10 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:zora/domain/repository/post_repo/post_repo.dart';
-import 'package:zora/domain/repository/profile_repo/profile_repo.dart';
-import 'package:zora/domain/repository/user_repo/user_repo.dart';
 
 part 'delete_post_event.dart';
 part 'delete_post_state.dart';

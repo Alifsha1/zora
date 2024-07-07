@@ -24,7 +24,7 @@ class ShowingProfileTileLoading extends StatelessWidget {
             top: 10,
             right: 20,
             child: Icon(
-              Customiconsflutter.setting_line,
+              Customiconsflutter.settingline,
               size: 25,
               color: Colors.white,
             ),

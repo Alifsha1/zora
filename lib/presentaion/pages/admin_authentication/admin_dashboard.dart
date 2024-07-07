@@ -24,9 +24,9 @@ class _AdminDashboardState extends State<AdminDashboard> {
           children: [
             Row(
               children: [
-                MainHeading(heading: 'Admin'),
-                Spacer(),
-                IconButton(onPressed: () {}, icon: Icon(FeatherIcons.logOut))
+                const MainHeading(heading: 'Admin'),
+                const Spacer(),
+                IconButton(onPressed: () {}, icon: const Icon(FeatherIcons.logOut))
               ],
             ),
             Column(

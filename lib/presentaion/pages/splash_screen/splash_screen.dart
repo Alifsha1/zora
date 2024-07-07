@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:zora/data/service/shared_preferences/shared_preference.dart';
@@ -36,6 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
             ],
           ),
+          // ignore: prefer_const_constructors
           NormalBondTitles(
             titles: 'Connect, explore, and \n   express yourself☀️',
             color: const Color.fromARGB(255, 119, 118, 118),
@@ -44,24 +47,10 @@ class _SplashScreenState extends State<SplashScreen> {
             'assets/lottie/Animation - 1720267696953.json',
             width: 400,
             height: 400,
-            // onLoaded: (p0) async {
-            //   await Future.delayed(const Duration(milliseconds: 1000));
-            // },
           ),
         ],
       )),
     );
-    // return AnimatedSplashScreen(
-    //   splash: Column(
-    //     children: [
-    //       Center(
-    //         child: LottieBuilder.asset(
-    //             'assets/lottie/Animation - 1720267696953.json'),
-    //       ),
-    //     ],
-    //   ),
-    //   nextScreen: SizedBox(),
-    // );
   }
 
   Future<void> checkUserStatus() async {

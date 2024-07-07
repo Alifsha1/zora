@@ -34,14 +34,14 @@ class ContainerSlideSec extends StatelessWidget {
               padding: const EdgeInsets.only(left: 20, right: 20),
               child: Text(
                 title,
-                style: TextStyle(
+                style: const TextStyle(
                     fontFamily: "Quick_sand",
                     fontWeight: FontWeight.normal,
                     color: kblack,
                     fontSize: 17),
               ),
             ),
-            Spacer(),
+            const Spacer(),
             Icon(iconsleft)
           ],
         ),

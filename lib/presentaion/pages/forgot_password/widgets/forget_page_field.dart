@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zora/core/utils/alerts.dart';
 import 'package:zora/core/utils/validation.dart';
@@ -40,13 +39,13 @@ class _ForgetPageFieldState extends State<ForgetPageField> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   MainHeading(heading: 'Forgot your password'),
                 ],
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   NormalBondTitles(
@@ -60,7 +59,7 @@ class _ForgetPageFieldState extends State<ForgetPageField> {
               BlocListener<ForgetPasswordBloc, ForgetPasswordState>(
                 listener: forgetPasswordListener,
                 child: Textformfieldlog(
-                   label: Text('email'),
+                   label: const Text('email'),
                   hint: 'Email',
                   controller: emailcontroller,
                   validator: (val) {
@@ -78,7 +77,6 @@ class _ForgetPageFieldState extends State<ForgetPageField> {
                 mediawidth: widget.mediawidth,
                 buttontext: 'sent-Otp',
                 onPressed: () {
-                  print('email in forgetpage :${emailcontroller.text}');
                   if (formKey.currentState!.validate()) {
                     context
                         .read<ForgetPasswordBloc>()
@@ -100,13 +98,13 @@ class _ForgetPageFieldState extends State<ForgetPageField> {
   }
 
   SizedBox sizedboxconst20() {
-    return SizedBox(
+    return const SizedBox(
       height: 20,
     );
   }
 
   SizedBox sizedboxconst10() {
-    return SizedBox(
+    return const SizedBox(
       height: 10,
     );
   }

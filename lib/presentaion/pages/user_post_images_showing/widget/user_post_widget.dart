@@ -69,9 +69,9 @@ class _UserPostWidgetState extends State<UserPostWidget> {
               context, 'Something wrong try again later', Colors.red);
         }
       },
-      builder: (context, State) {
+      builder: (context, state) {
         return BlocBuilder<UserProfileBloc, UserProfileState>(
-            builder: (context, State) {
+            builder: (context, state) {
           return ListView.builder(
               itemCount: widget.userModel.posts!.length,
               controller: scrollController,
@@ -200,7 +200,7 @@ class _UserPostWidgetState extends State<UserPostWidget> {
                                       PopupMenuItem(
                                         onTap: () {
                                           context.read<DeletePostBloc>()
-                                            ..add(DeletePostfromProfileEvent(
+                                            .add(DeletePostfromProfileEvent(
                                                 postid: post.id!));
                                           deletePost(post.id!);
                                           context.read<UserProfileBloc>().add(
@@ -209,7 +209,7 @@ class _UserPostWidgetState extends State<UserPostWidget> {
                                         value: 'Delete',
                                         child: const Text(
                                           'Delete',
-                                          style: TextStyle(color: Colors.white),
+                                          style: TextStyle(color: kwhite),
                                         ),
                                       ),
                                     ];
@@ -222,7 +222,7 @@ class _UserPostWidgetState extends State<UserPostWidget> {
                         child: Icon(
                           FeatherIcons.heart,
                           size: 25,
-                          color: Colors.white,
+                          color: kwhite,
                         ),
                       ),
                       const Positioned(
@@ -231,7 +231,7 @@ class _UserPostWidgetState extends State<UserPostWidget> {
                         child: Text(
                           '3568',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: kwhite,
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
                           ),
@@ -243,7 +243,7 @@ class _UserPostWidgetState extends State<UserPostWidget> {
                         child: Icon(
                           FeatherIcons.messageCircle,
                           size: 25,
-                          color: Colors.white,
+                          color: kwhite,
                         ),
                       ),
                       const Positioned(
@@ -252,7 +252,7 @@ class _UserPostWidgetState extends State<UserPostWidget> {
                         child: Text(
                           '3568',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: kwhite,
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
                           ),
@@ -264,7 +264,7 @@ class _UserPostWidgetState extends State<UserPostWidget> {
                         child: Text(
                           post.description ?? '',
                           style: const TextStyle(
-                            color: Colors.white,
+                            color: kwhite,
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),

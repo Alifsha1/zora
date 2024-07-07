@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:zora/presentaion/pages/user_login/login_page.dart';
 
 class LoginWidget extends StatelessWidget {
@@ -12,7 +11,7 @@ class LoginWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
+        const Text(
           'Already have an account?',
           style: TextStyle(
               color: Color.fromARGB(255, 127, 162, 194),
@@ -24,10 +23,10 @@ class LoginWidget extends StatelessWidget {
             Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => UserLogin()),
+                    builder: (context) => const UserLogin()),
                 (route) => false);
           },
-          child: Text(
+          child: const Text(
             'Login',
             style: TextStyle(
                 color: Colors.blue,

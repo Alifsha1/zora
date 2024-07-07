@@ -21,7 +21,7 @@ class _AdminLoginState extends State<AdminLogin> {
       body: SafeArea(
           child: Column(
         children: [
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               MainHeading(heading: 'Admin'),
@@ -35,19 +35,19 @@ class _AdminLoginState extends State<AdminLogin> {
             child: Column(
               children: [
                 Textformfieldlog(
-                   label: Text('Username'),
+                   label: const Text('Username'),
                   hint: 'User name',
                   controller: usernameController,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Textformfieldlog(
-                   label: Text('password'),
+                   label: const Text('password'),
                   hint: 'password',
                   controller: passwordController,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Buttonelevated(mediawidth: mediawidth, buttontext: 'Log in'),

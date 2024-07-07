@@ -23,11 +23,11 @@ class CustomTabBar extends StatelessWidget {
           indicatorColor: kblack,
           labelColor: Colors.black,
           controller: tabController,
-          tabs: [
-            const TabItems(
+          tabs: const [
+            TabItems(
               icons: FeatherIcons.grid,
             ),
-            const TabItems(icons: FeatherIcons.bookmark),
+            TabItems(icons: FeatherIcons.bookmark),
           ],
         ),
       ),

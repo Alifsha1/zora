@@ -79,7 +79,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                           top: 10,
                           right: 20,
                           child: Icon(
-                            Customiconsflutter.setting_line,
+                            Customiconsflutter.settingline,
                             size: 25,
                             color: Colors.white,
                           ),
@@ -138,7 +138,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                     AddProfilePicEvent(image: profileImage!));
                               },
                               child: const Icon(
-                                Customiconsflutter.edit_fill,
+                                Customiconsflutter.editfill,
                                 color: Colors.black,
                               ),
                             ),
@@ -162,13 +162,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                             image: profileImage!));
                                   },
                                   child: const Icon(
-                                    Customiconsflutter.edit_fill,
+                                    Customiconsflutter.editfill,
                                     color: Colors.black,
                                   ),
                                 );
                               },
                               child: const Icon(
-                                Customiconsflutter.edit_fill,
+                                Customiconsflutter.editfill,
                                 color: Colors.black,
                               ),
                             ),
