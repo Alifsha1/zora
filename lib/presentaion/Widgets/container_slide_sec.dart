@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zora/core/style/colors/colors.dart';
 
 class ContainerSlideSec extends StatelessWidget {
   final IconData iconsright;
@@ -36,7 +37,7 @@ class ContainerSlideSec extends StatelessWidget {
                 style: TextStyle(
                     fontFamily: "Quick_sand",
                     fontWeight: FontWeight.normal,
-                    color: Colors.black,
+                    color: kblack,
                     fontSize: 17),
               ),
             ),

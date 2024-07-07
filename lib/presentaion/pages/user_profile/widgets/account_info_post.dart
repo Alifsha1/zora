@@ -1,14 +1,19 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:zora/core/style/colors/colors.dart';
+import 'package:zora/data/models/user_model/user_model.dart';
 
 class AccountInfoPost extends StatelessWidget {
   const AccountInfoPost({
     super.key,
     required this.mediaheight,
     required this.mediawidth,
+    required this.userModel,
   });
 
   final double mediaheight;
   final double mediawidth;
+    final UserModel? userModel;
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +22,14 @@ class AccountInfoPost extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
+          const Column(
             children: [
               Text(
                 '2k',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.normal,
-                  color: Colors.black,
+                  color: kblack,
                 ),
               ),
               Text(
@@ -32,30 +37,30 @@ class AccountInfoPost extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.normal,
-                  color: Colors.grey,
+                  color: kgrey,
                 ),
               )
             ],
           ),
-          Container(
+          SizedBox(
             height: mediaheight * .08,
             width: mediawidth * 0.01,
-            child: VerticalDivider(
+            child: const VerticalDivider(
               width: 10,
               thickness: 2,
-              color: Colors.grey,
+              color: kgrey,
               endIndent: 10,
               indent: 1,
             ),
           ),
-          Column(
+          const Column(
             children: [
               Text(
                 '1k',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.normal,
-                  color: Colors.black,
+                  color: kblack,
                 ),
               ),
               Text(
@@ -63,40 +68,40 @@ class AccountInfoPost extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.normal,
-                  color: Colors.grey,
+                  color: kgrey,
                 ),
               )
             ],
           ),
-          Container(
+          SizedBox(
             height: mediaheight * .08,
             width: mediawidth * 0.01,
-            child: VerticalDivider(
+            child: const VerticalDivider(
               width: 10,
               thickness: 2,
-              color: Colors.grey,
+              color: kgrey,
               endIndent: 10,
               indent: 1,
             ),
           ),
-          Padding(
+           Padding(
             padding: const EdgeInsets.only(left: 15, right: 15),
             child: Column(
               children: [
                 Text(
-                  '52',
-                  style: TextStyle(
+                userModel!.posts!.length.toString(),
+                  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.normal,
-                    color: Colors.black,
+                    color: kblack,
                   ),
                 ),
-                Text(
+                const Text(
                   'Posts',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.normal,
-                    color: Colors.grey,
+                    color: kgrey,
                   ),
                 )
               ],

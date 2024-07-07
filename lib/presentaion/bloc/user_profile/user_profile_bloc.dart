@@ -1,9 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart';
 import 'package:meta/meta.dart';
+import 'package:zora/data/models/post_model/post_model.dart';
 import 'package:zora/data/models/user_model/user_model.dart';
 import 'package:zora/domain/repository/user_repo/user_repo.dart';
 
@@ -23,8 +25,16 @@ class UserProfileBloc extends Bloc<UserProfileEvent, UserProfileState> {
     if (result.statusCode == 200) {
       debugPrint('${responseBody['user']['username']}');
       final UserModel user = UserModel.fromJson(responseBody['user']);
+     // final PostModel post = PostModel.fromJson(responseBody['posts']);
+     //  log('posts description${responseBody['posts']['description']}');
+      final List<PostModel> posts = List<PostModel>.from(
+          responseBody['posts'].map((post) => PostModel.fromJson(post)));
+      user.posts = posts;
       debugPrint('inside this${user.username}');
-      emit(UserProfileSuccessfulState(user: user));
+      emit(UserProfileSuccessfulState(
+        user: user,
+       // post: post
+      ));
     } else {
       emit(UserProfileFetchServereErrorState());
     }

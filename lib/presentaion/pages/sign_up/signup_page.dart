@@ -37,6 +37,7 @@ class _SignUpPageState extends State<SignUpPage> {
         body: BlocListener<SignUpBlocBloc, SignUpBlocState>(
       listener: (context, state) {
         if (state is USerOtpSucceccState) {
+              customSnackbar(context, "Otp send successfully",Colors.green);
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -79,6 +80,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   child: Column(
                     children: [
                       Textformfieldlog(
+                         label: Text('full name'),
                         hint: 'Full name',
                         controller: fullnameController,
                         validator: (val) {
@@ -90,6 +92,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                       sizedboxconst20(),
                       Textformfieldlog(
+                         label: Text('Username'),
                         hint: ' Username',
                         controller: usernameController,
                         validator: (val) {
@@ -109,6 +112,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                       sizedboxconst20(),
                       Textformfieldlog(
+                         label: Text('email'),
                         hint: 'email',
                         controller: emailController,
                         validator: (val) {
@@ -121,6 +125,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                       sizedboxconst20(),
                       Textformfieldlog(
+                         label: Text('phone no'),
                         hint: 'phone number',
                         controller: phonenumberController,
                         validator: (val) {
@@ -132,6 +137,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                       sizedboxconst20(),
                       Textformfieldlog(
+                         label: Text('create password'),
                         hint: 'Create password',
                         controller: passwordController,
                         validator: (val) {
@@ -143,6 +149,8 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                       sizedboxconst20(),
                       Textformfieldlog(
+                      
+                         label: Text('confirm password'),
                         hint: 'confirm passwpord',
                         controller: confirmpasswordController,
                         validator: (val) {
@@ -165,8 +173,9 @@ class _SignUpPageState extends State<SignUpPage> {
                               context.read<SignUpBlocBloc>().add(
                                   UserOtpVerificationEvent(
                                       email: emailController.text));
-                              customSnackbar(context, "Otp send successfully",Colors.green);
+                           
                             }
+                               //customSnackbar(context, "Otp send successfully",Colors.green);
                           } else {
                             customSnackbar(context, "Password doesn't match",Colors.red);
                           }

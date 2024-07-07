@@ -11,8 +11,8 @@ class AdminLogin extends StatefulWidget {
 }
 
 class _AdminLoginState extends State<AdminLogin> {
-    final TextEditingController usernameController = TextEditingController();
-      final TextEditingController passwordController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final mediawidth = MediaQuery.of(context).size.width;
@@ -34,11 +34,19 @@ class _AdminLoginState extends State<AdminLogin> {
             padding: const EdgeInsets.only(left: 20, right: 20),
             child: Column(
               children: [
-                Textformfieldlog(hint: 'User name',controller: usernameController),
+                Textformfieldlog(
+                   label: Text('Username'),
+                  hint: 'User name',
+                  controller: usernameController,
+                ),
                 SizedBox(
                   height: 20,
                 ),
-                Textformfieldlog(hint: 'password',controller: passwordController,),
+                Textformfieldlog(
+                   label: Text('password'),
+                  hint: 'password',
+                  controller: passwordController,
+                ),
                 SizedBox(
                   height: 30,
                 ),

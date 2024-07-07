@@ -60,6 +60,7 @@ class _ForgetPageFieldState extends State<ForgetPageField> {
               BlocListener<ForgetPasswordBloc, ForgetPasswordState>(
                 listener: forgetPasswordListener,
                 child: Textformfieldlog(
+                   label: Text('email'),
                   hint: 'Email',
                   controller: emailcontroller,
                   validator: (val) {

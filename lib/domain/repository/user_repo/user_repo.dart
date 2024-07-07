@@ -1,5 +1,3 @@
-
-
 import 'dart:developer';
 
 import 'package:http/http.dart' as http;
@@ -16,10 +14,10 @@ class UserRepo {
       var response = await client.get(
           Uri.parse('${ApiEndPoints.baseUrl}${ApiEndPoints.profile}'),
           headers: {'Authorization': 'Bearer $token'});
+     // log('user repo :${response.body.toString()}');
       return response;
     } catch (e) {
       log(e.toString());
-
     }
   }
 }

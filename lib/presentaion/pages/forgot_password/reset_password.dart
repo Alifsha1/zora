@@ -47,6 +47,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                   height: mediaheight * .15,
                 ),
                 Textformfieldlog(
+                   label: Text('otp'),
                   hint: 'OTP',
                   controller: otpController,
                   validator: (val) {
@@ -58,6 +59,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 ),
                 sizedboxconst20(),
                 Textformfieldlog(
+                   label: Text('New password'),
                   hint: 'New password',
                   controller: passwordController,
                   validator: (val) {
@@ -70,6 +72,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 ),
                 sizedboxconst20(),
                 Textformfieldlog(
+                   label: Text('confirm password'),
                   hint: 'Confirm password',
                   controller: confirmpasswordController,
                   validator: (val) {

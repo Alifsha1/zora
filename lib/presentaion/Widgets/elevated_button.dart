@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zora/core/style/colors/colors.dart';
 
 class Buttonelevated extends StatelessWidget {
   final void Function()? onPressed;
@@ -19,7 +20,7 @@ class Buttonelevated extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.black,
+            backgroundColor: kblack,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(6))),
         child: Text(
@@ -27,7 +28,7 @@ class Buttonelevated extends StatelessWidget {
           style: const TextStyle(
               fontFamily: "Quick_sand",
               fontWeight: FontWeight.w600,
-              color: Colors.white),
+              color: kwhite),
         ),
       ),
     );

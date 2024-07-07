@@ -36,6 +36,7 @@ class UserLoginWidget extends StatelessWidget {
             child: Column(
               children: [
                 Textformfieldlog(
+                  label: Text('Username'),
                   hint: 'Username',
                   controller: usernameController,
                   validator: (val) {
@@ -51,6 +52,8 @@ class UserLoginWidget extends StatelessWidget {
                 BlocBuilder<TogglePasswordCubit, bool>(
                     builder: (context, state) {
                   return Textformfieldlog(
+                    yes: state,
+                    label: Text('password'),
                     hint: 'password',
                     controller: passwordController,
                     suffix: GestureDetector(
@@ -114,13 +117,13 @@ class UserLoginWidget extends StatelessWidget {
 
   void userLoginListener(BuildContext context, UserLoginState state) {
     if (state is InvalidUsernameErrorState) {
-      customSnackbar(context, "Username doesn't exist",Colors.red);
+      customSnackbar(context, "Username doesn't exist", Colors.red);
     }
     if (state is InvalidPasswordErrorState) {
-      customSnackbar(context, "Incorrect password",Colors.red);
+      customSnackbar(context, "Incorrect password", Colors.red);
     }
     if (state is BlockedbyAdminErrorState) {
-      customSnackbar(context, 'you have been blocked by zora...',Colors.red);
+      customSnackbar(context, 'you have been blocked by zora...', Colors.red);
     }
     if (state is UserLoginSuccessState) {
       Navigator.push(context,
@@ -128,7 +131,7 @@ class UserLoginWidget extends StatelessWidget {
       context.read<TogglePasswordCubit>().reset();
     }
     if (state is UserSignInErrorState) {
-      customSnackbar(context, "Incorrect password",Colors.red);
+      customSnackbar(context, "Incorrect password", Colors.red);
     }
   }
 }

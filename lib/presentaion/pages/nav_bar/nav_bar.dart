@@ -151,7 +151,7 @@ class _CustomNavBarState extends State<CustomNavBar> {
   }
 
   Widget _buildIconButton(int index, IconData icon) {
-   // bool isSelected = indexChangeNotifier.value == index;
+    // bool isSelected = indexChangeNotifier.value == index;
 
     return ValueListenableBuilder<int>(
       valueListenable: indexChangeNotifier,

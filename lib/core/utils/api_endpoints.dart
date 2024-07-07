@@ -9,4 +9,6 @@ class ApiEndPoints {
   static String forgetsendOtp = '/forget-send-otp';
   static String forgetpassword = '/forget-password';
   static String editprofile = '/profile/edit';
+  static String createPost = '/createpost';
+  static String deletepost = '/post/';
 }

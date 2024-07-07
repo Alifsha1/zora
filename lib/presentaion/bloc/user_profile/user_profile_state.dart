@@ -9,7 +9,13 @@ final class UserProfileFetchLoadingState extends UserProfileState {}
 
 final class UserProfileSuccessfulState extends UserProfileState {
   final UserModel user;
-  UserProfileSuccessfulState({required this.user});
+  //final PostModel post;
+  UserProfileSuccessfulState({
+    required this.user,
+  //  required this.post,
+  });
 }
-final class UserProfileFetchServereErrorState extends UserProfileState{}
-final class UserProfileFetchuserNotfounnd extends UserProfileState{}
+
+final class UserProfileFetchServereErrorState extends UserProfileState {}
+
+final class UserProfileFetchuserNotfounnd extends UserProfileState {}

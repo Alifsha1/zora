@@ -4,12 +4,16 @@ part of 'edit_profile_bloc.dart';
 sealed class EditProfileEvent {}
 
 class EditUserDetailEvent extends EditProfileEvent {
-  final UserModel updateUser;
-  final UserModel intialUser;
-  final List<AssetEntity> profilePicture;
-  EditUserDetailEvent({
-    required this.updateUser,
-    required this.intialUser,
-    required this.profilePicture,
+   final String? username;
+  final String? fullname;
+  final dynamic profilePicture;
+  final dynamic  coverPicture;
+  final String? bio;
+  EditUserDetailEvent( {
+     this.username,
+     this.fullname,
+     this.profilePicture,
+     this.coverPicture,
+     this.bio
   });
 }
