@@ -6,12 +6,20 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:zora/presentaion/bloc/comment/comment_bloc.dart';
 import 'package:zora/presentaion/bloc/create_post/create_post_bloc.dart';
 import 'package:zora/presentaion/bloc/delete_post/delete_post_bloc.dart';
 import 'package:zora/presentaion/bloc/edit_profile/edit_profile_bloc.dart';
+import 'package:zora/presentaion/bloc/folllow_unfollow.dart/follow_unfollow_user_bloc.dart';
 import 'package:zora/presentaion/bloc/forget_password/forget_password_bloc.dart';
+import 'package:zora/presentaion/bloc/get_all_post/get_all_post_bloc.dart';
 import 'package:zora/presentaion/bloc/image_picker/image_picker_bloc.dart';
+import 'package:zora/presentaion/bloc/like_post/like_post_bloc.dart';
 import 'package:zora/presentaion/bloc/post_/post_bloc.dart';
+import 'package:zora/presentaion/bloc/profile_fetch_by_id.dart/profile_fetch_by_id_bloc.dart';
+import 'package:zora/presentaion/bloc/profile_of_users_bloc/profile_bloc.dart';
+import 'package:zora/presentaion/bloc/save_Unsave_post/save_un_save_post_bloc.dart';
+import 'package:zora/presentaion/bloc/saved_posts/saved_posts_bloc.dart';
 import 'package:zora/presentaion/bloc/selected_images/selected_images_bloc.dart';
 import 'package:zora/presentaion/bloc/sign_up_bloc/sign_up_bloc_bloc.dart';
 import 'package:zora/presentaion/bloc/user_login/user_login_bloc.dart';
@@ -50,6 +58,14 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context) => SelectedImagesBloc()),
           BlocProvider(create: (context) => DeletePostBloc()),
           BlocProvider(create: (context) => PostBloc()),
+          BlocProvider(create: (context) => GetAllPostBloc()),
+          BlocProvider(create: (context) => LikePostBloc()),
+          BlocProvider(create: (context) => CommentBloc()),
+          BlocProvider(create: (context) => ProfileFetchByIdBloc()),
+          BlocProvider(create: (context) => FollowUnfollowUserBloc()),
+          BlocProvider(create: (context) => ProfileBloc()),
+          BlocProvider(create: (context) => SaveUnSavePostBloc()),
+          BlocProvider(create: (context)=>SavedPostsBloc()),
         ],
         child: BlocBuilder<ThemeCubit, ThemeMode>(
           builder: (context, ThemeMode mode) {

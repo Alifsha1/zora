@@ -5,12 +5,15 @@ import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
+import 'package:zora/core/navigators/navigators.dart';
 import 'package:zora/core/style/colors/colors.dart';
 import 'package:zora/core/utils/alerts.dart';
 import 'package:zora/data/models/post_model/post_model.dart';
 import 'package:zora/data/models/user_model/user_model.dart';
 import 'package:zora/presentaion/bloc/delete_post/delete_post_bloc.dart';
 import 'package:zora/presentaion/bloc/user_profile/user_profile_bloc.dart';
+import 'package:zora/presentaion/pages/profile/widgets/image_preview.dart';
 
 class UserPostWidget extends StatefulWidget {
   final UserModel userModel;
@@ -77,6 +80,7 @@ class _UserPostWidgetState extends State<UserPostWidget> {
               controller: scrollController,
               itemBuilder: (context, index) {
                 final post = widget.userModel.posts![index];
+             final time =    formatTimeAgo(post.createdAt!);
                 final mediaURLs =
                     post.mediaURL != null && post.mediaURL!.isNotEmpty
                         ? post.mediaURL!
@@ -91,35 +95,51 @@ class _UserPostWidgetState extends State<UserPostWidget> {
                   child: Stack(
                     children: [
                       mediaURLs.length > 1
-                          ? ConstrainedBox(
-                              constraints: BoxConstraints.loose(
-                                  Size(widget.mediawidth, 350)),
-                              child: Swiper(
-                                itemBuilder: (context, pageIndex) {
-                                  return Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(40),
-                                      image: DecorationImage(
-                                        image:
-                                            NetworkImage(mediaURLs[pageIndex]),
-                                        fit: BoxFit.cover,
-                                      ),
+                          ? GestureDetector(
+                              onTap: () {
+                                navigatorPush(
+                                    ImagePreviewScreen(
+                                      images: mediaURLs,
                                     ),
-                                  );
-                                },
-                                itemCount: mediaURLs.length,
-                                pagination: const SwiperPagination(
-                                  margin: EdgeInsets.all(5.0),
+                                    context);
+                              },
+                              child: ConstrainedBox(
+                                constraints: BoxConstraints.loose(
+                                    Size(widget.mediawidth, 350)),
+                                child: Swiper(
+                                  itemBuilder: (context, pageIndex) {
+                                    return Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(40),
+                                        image: DecorationImage(
+                                          image: NetworkImage(
+                                              mediaURLs[pageIndex]),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  itemCount: mediaURLs.length,
+                                  pagination: const SwiperPagination(
+                                    margin: EdgeInsets.all(5.0),
+                                  ),
                                 ),
                               ),
                             )
-                          : Container(
-                              height: 350,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(40),
-                                image: DecorationImage(
-                                  image: NetworkImage(mediaURLs[0]),
-                                  fit: BoxFit.cover,
+                          : GestureDetector(
+                              onTap: () {
+                                navigatorPush(
+                                    ImagePreviewScreen(images: mediaURLs),
+                                    context);
+                              },
+                              child: Container(
+                                height: 350,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(40),
+                                  image: DecorationImage(
+                                    image: NetworkImage(mediaURLs[0]),
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
                             ),
@@ -156,17 +176,19 @@ class _UserPostWidgetState extends State<UserPostWidget> {
                                     Text(
                                       widget.userModel.username!,
                                       style: const TextStyle(
-                                        color:kwhite,
+                                        color: kwhite,
                                         fontSize: 15,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                    const Text('1 day ago',
-                                        style: TextStyle(
-                                          color: kwhite,
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.bold,
-                                        ))
+                                    Text(
+                                     time,
+                                      style: TextStyle(
+                                        color: kwhite,
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
                                   ],
                                 )
                               ],
@@ -199,12 +221,33 @@ class _UserPostWidgetState extends State<UserPostWidget> {
                                       ),
                                       PopupMenuItem(
                                         onTap: () {
-                                          context.read<DeletePostBloc>()
-                                            .add(DeletePostfromProfileEvent(
-                                                postid: post.id!));
+                                         showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                      //  backgroundColor: Colors.transparent.withOpacity(0.5),
+                            title: const Text('Delete post'),
+                            content:
+                                const Text("Are you sure you want \nto delete?"),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: const Text('cancel'),
+                              ),
+                              TextButton(
+                                onPressed: () async {
+                                  context.read<DeletePostBloc>().add(
+                                              DeletePostfromProfileEvent(
+                                                  postid: post.id!));
                                           deletePost(post.id!);
                                           context.read<UserProfileBloc>().add(
                                               UserProfileInitialDetailsFetchEvent());
+                                },
+                                child: const Text('delete',style: TextStyle(color: kred),),
+                              ),
+                            ],
+                          ));
                                         },
                                         value: 'Delete',
                                         child: const Text(
@@ -278,4 +321,24 @@ class _UserPostWidgetState extends State<UserPostWidget> {
       },
     );
   }
+String formatTimeAgo(String dateTimeString) {
+  DateTime dateTime = DateTime.parse(dateTimeString);
+  final now = DateTime.now();
+  final difference = now.difference(dateTime);
+
+  if (difference.inDays > 7) {
+    return DateFormat('yMMMd').format(dateTime); // e.g., Jan 1, 2024
+  } else if (difference.inDays >= 2) {
+    return '${difference.inDays} days ago';
+  } else if (difference.inDays >= 1) {
+    return 'yesterday';
+  } else if (difference.inHours >= 1) {
+    return '${difference.inHours} hours ago';
+  } else if (difference.inMinutes >= 1) {
+    return '${difference.inMinutes} minutes ago';
+  } else {
+    return 'just now';
+  }
+  
+}
 }

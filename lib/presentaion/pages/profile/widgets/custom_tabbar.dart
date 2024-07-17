@@ -1,7 +1,7 @@
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:zora/core/style/colors/colors.dart';
-import 'package:zora/presentaion/pages/user_profile/widgets/tab_items.dart';
+import 'package:zora/presentaion/pages/profile/widgets/tab_items.dart';
 
 class CustomTabBar extends StatelessWidget {
   const CustomTabBar({
@@ -21,7 +21,7 @@ class CustomTabBar extends StatelessWidget {
         ),
         child: TabBar(
           indicatorColor: kblack,
-          labelColor: Colors.black,
+          labelColor: kblack,
           controller: tabController,
           tabs: const [
             TabItems(

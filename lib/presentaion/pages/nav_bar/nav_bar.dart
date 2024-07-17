@@ -98,7 +98,7 @@ import 'package:flutter/material.dart';
 import 'package:zora/presentaion/pages/explore_page/explore_page.dart';
 import 'package:zora/presentaion/pages/home_screen/home_screen.dart';
 import 'package:zora/presentaion/pages/post_add_page/post_add_page.dart';
-import 'package:zora/presentaion/pages/user_profile/profile_screen.dart';
+import 'package:zora/presentaion/pages/profile/profile_screen.dart';
 
 class CustomNavBar extends StatefulWidget {
   const CustomNavBar({super.key});

@@ -44,6 +44,7 @@ class _PostGridViewState extends State<PostGridView> {
                   UsersPostImages(
                     userModel: widget.userModel!,
                     index: index,
+                    title: 'Posts',
                   ),
                   context);
             },

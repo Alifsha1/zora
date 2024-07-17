@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:lottie/lottie.dart';
 import 'package:photo_manager/photo_manager.dart';
 import 'package:wechat_assets_picker/wechat_assets_picker.dart';
 import 'package:zora/core/constants/contants.dart';
@@ -106,11 +107,10 @@ class _PostAddScreenState extends State<PostAddScreen> {
           builder: (context, state) {
             if (state is AddPostLoadingState) {
               return Center(
-                child: LoadingAnimationWidget.discreteCircle(
-                  color: kwhite,
-                  secondRingColor: kgreen,
-                  thirdRingColor: kyellow,
-                  size: 50,
+                child: LottieBuilder.asset(
+                  'assets/lottie/creatingloading.json',
+                  width: 350,
+                  height: 350,
                 ),
               );
             } else {

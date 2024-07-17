@@ -1,10 +1,13 @@
+import 'package:zora/data/models/user_model/user_model.dart';
+
 class PostModel {
   String? id;
   String? userId;
+  final UserModel? user;
   String? description;
   List? mediaURL;
   List? likes;
-  List<dynamic>? comments;
+  List<CommentModel>? comments;
   String? location;
   bool? isBlocked;
   String? createdAt;
@@ -14,6 +17,7 @@ class PostModel {
   PostModel({
     this.id,
     this.userId,
+    this.user,
     this.description,
     this.mediaURL,
     this.likes,
@@ -29,11 +33,15 @@ class PostModel {
   factory PostModel.fromJson(Map<String, dynamic> json) {
     return PostModel(
       id: json['_id'],
-      userId: json['userId'],
+      userId: json['userId'] is String ? json['userId'] : null,
+      user: json['userId'] is Map<String, dynamic>
+          ? UserModel.fromJson(json['userId'])
+          : UserModel(),
       description: json['description'],
       mediaURL: json['mediaURL'],
-      likes: json['likes'],
-      comments: List<dynamic>.from(json['comments']),
+      likes: List<String>.from(json['likes']),
+      comments: List<CommentModel>.from(
+          json['comments'].map((comment) => CommentModel.fromJson(comment))),
       location: json['location'],
       isBlocked: json['isBlocked'],
       createdAt: json['createdAt'],
@@ -46,7 +54,7 @@ class PostModel {
   Map<String, dynamic> toJson() {
     return {
       '_id': id,
-      'userId': userId,
+      'userId': user is Map<String, dynamic> ? user?.toJson() : userId,
       'description': description,
       'mediaURL': mediaURL,
       'likes': likes,
@@ -60,3 +68,33 @@ class PostModel {
   }
 }
 
+class CommentModel {
+  final String id;
+  final UserModel user;
+  final String comments;
+  final String createdAt;
+
+  CommentModel({
+    this.id = '',
+    required this.user,
+    required this.comments,
+    required this.createdAt,
+  });
+  factory CommentModel.fromJson(Map<String, dynamic> json) {
+    return CommentModel(
+      id: json['_id'],
+      user: json['userId'] is Map<String, dynamic>
+          ? UserModel.fromJson(json['userId'])
+          : UserModel(),
+      comments: json['comment'],
+      createdAt: json['createdAt'],
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+        '_id': id,
+        'userId': user.toJson(),
+        'comment': comments,
+        'createdAt': createdAt
+      };
+}

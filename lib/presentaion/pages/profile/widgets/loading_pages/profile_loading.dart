@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:zora/core/constants/contants.dart';
-import 'package:zora/presentaion/pages/user_profile/widgets/loading_pages/acountinfo_loading.dart';
-import 'package:zora/presentaion/pages/user_profile/widgets/loading_pages/post_grid_loading.dart';
-import 'package:zora/presentaion/pages/user_profile/widgets/loading_pages/profile_tile_loading.dart';
+import 'package:zora/presentaion/pages/profile/widgets/loading_pages/acountinfo_loading.dart';
+import 'package:zora/presentaion/pages/profile/widgets/loading_pages/post_grid_loading.dart';
+import 'package:zora/presentaion/pages/profile/widgets/loading_pages/profile_tile_loading.dart';
 
 class ProfileLoading extends StatefulWidget {
   final double mediaheight;

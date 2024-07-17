@@ -11,6 +11,8 @@ class UserModel {
   final String? coverPic;
   final String? bio;
   List<PostModel>? posts;
+  final List? followers;
+  final List? following;
   final String? fullName;
   final String? otp;
 
@@ -25,6 +27,8 @@ class UserModel {
     this.coverPic,
     this.bio,
     this.posts,
+    this.followers,
+    this.following,
     this.fullName,
     this.otp,
   });
@@ -40,6 +44,8 @@ class UserModel {
       profilePicture: json['profile_picture'],
       coverPic: json['cover_photo'],
       bio: json['bio'],
+      followers: json['followers'],
+      following: json['following'],
       fullName: json['fullname'],
       otp: json['otp'],
     );
@@ -56,9 +62,10 @@ class UserModel {
       "cover_photo": coverPic,
       "bio": bio,
       "posts": posts,
+      "followers": followers,
+      "following": following,
       "fullname": fullName,
       "otp": otp,
     };
   }
 }
-

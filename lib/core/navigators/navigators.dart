@@ -7,12 +7,19 @@ navigatorReplacement(page, context) {
       type: PageTransitionType.fade,
       duration: const Duration(seconds: 1)));
 }
+
 navigatorPush(page, context) {
   Navigator.of(context).push(PageTransition(
       child: page,
       type: PageTransitionType.fade,
       duration: const Duration(milliseconds: 1000)));
 }
+
 navigatorPushReplacement(page, context) {
-  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (ctx)=>page), (route) => false);
+  Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(builder: (ctx) => page), (route) => false);
+}
+
+navigatorpop(context) {
+  Navigator.pop(context);
 }

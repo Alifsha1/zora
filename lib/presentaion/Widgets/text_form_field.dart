@@ -8,7 +8,7 @@ class Textformfieldlog extends StatelessWidget {
   final Widget? prefix;
   final IconData? prefixicon;
   final int? maxlines;
-  final Widget label;
+  final Widget? label;
   final bool? yes;
   final String? Function(String?)? validator;
   const Textformfieldlog({
@@ -19,7 +19,7 @@ class Textformfieldlog extends StatelessWidget {
     this.validator,
     this.suffix,
     this.maxlines,
-    required this.label,
+     this.label,
     this.prefix,
     this.prefixicon,
     this.yes,

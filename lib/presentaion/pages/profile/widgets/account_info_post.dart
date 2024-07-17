@@ -12,7 +12,7 @@ class AccountInfoPost extends StatelessWidget {
 
   final double mediaheight;
   final double mediawidth;
-    final UserModel? userModel;
+  final UserModel? userModel;
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +21,13 @@ class AccountInfoPost extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Column(
+          Column(
             children: [
               Text(
-                '2k',
-                style: TextStyle(
+                userModel!.followers == null || userModel!.followers!.isEmpty
+                    ? '0'
+                    : userModel!.followers!.length.toString(),
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.normal,
                   color: kblack,
@@ -52,11 +54,13 @@ class AccountInfoPost extends StatelessWidget {
               indent: 1,
             ),
           ),
-          const Column(
+          Column(
             children: [
               Text(
-                '1k',
-                style: TextStyle(
+                userModel!.following == null || userModel!.following!.isEmpty
+                    ? '0'
+                    : userModel!.following!.length.toString(),
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.normal,
                   color: kblack,
@@ -83,12 +87,14 @@ class AccountInfoPost extends StatelessWidget {
               indent: 1,
             ),
           ),
-           Padding(
+          Padding(
             padding: const EdgeInsets.only(left: 15, right: 15),
             child: Column(
               children: [
                 Text(
-                userModel!.posts!.length.toString(),
+                  userModel!.posts == null || userModel!.posts!.isEmpty
+                      ? '0'
+                      : userModel!.posts!.length.toString(),
                   style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.normal,

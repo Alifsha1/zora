@@ -4,8 +4,7 @@ import 'package:zora/core/style/colors/colors.dart';
 import 'package:zora/data/models/user_model/user_model.dart';
 
 class ShowingProfileWidget extends StatelessWidget {
-  final Widget? navigateedit;
-  final Widget? navigatesettings;
+ 
   final UserModel? userModel;
   // final bool onprofile;
   // final bool isCurrentUser;
@@ -13,8 +12,7 @@ class ShowingProfileWidget extends StatelessWidget {
     super.key,
     required this.mediaheight,
     required this.mediawidth,
-    this.navigateedit,
-    this.navigatesettings,
+   
     required this.userModel,
     //this.onprofile = false,
     //required this.isCurrentUser,
@@ -50,7 +48,7 @@ class ShowingProfileWidget extends StatelessWidget {
                 image: DecorationImage(
                   image: userModel!.coverPic == null ||
                           userModel!.coverPic!.isEmpty
-                      ? const AssetImage('assets/images/placeholder cover.png')
+                      ? const AssetImage('assets/images/placeholdercover.jpg')
                       : NetworkImage(userModel!.coverPic!) as ImageProvider,
                   fit: BoxFit.cover,
                 ),

@@ -1,6 +1,8 @@
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:zora/presentaion/Widgets/zora.dart';
+import 'package:zora/presentaion/pages/home_screen/sections/post_section.dart';
 import 'package:zora/presentaion/pages/home_screen/widgets/post_container.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -9,7 +11,7 @@ class HomeScreen extends StatefulWidget {
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
-
+// late final controller = SlidableController(this);
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
@@ -49,21 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Padding(
             padding: const EdgeInsets.only(left: 20, right: 20, bottom: 15),
             child:
-                PostContainer(mediaheight: mediaheight, mediawidth: mediawidth),
-          ),
-        ),
-        SliverToBoxAdapter(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20, bottom: 15),
-            child:
-                PostContainer(mediaheight: mediaheight, mediawidth: mediawidth),
-          ),
-        ),
-        SliverToBoxAdapter(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20, bottom: 15),
-            child:
-                PostContainer(mediaheight: mediaheight, mediawidth: mediawidth),
+                PostSection(mediaheight: mediaheight, mediawidth: mediawidth),
           ),
         ),
       ],

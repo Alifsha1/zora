@@ -30,50 +30,6 @@ class ProfileRepo {
       return null;
     }
   }
-
-  // static Future<String> updateUserDetails(UserModel initialUser,
-  //     UserModel updatedUser, String updateProfilePicture,String updateCoverPicture) async {
-  //   var client = http.Client();
-  //   String token = await UserToken.getToken();
-  //   String updateUserDetailsurl =
-  //       "${ApiEndPoints.baseUrl}${ApiEndPoints.editprofile}";
-  //   try {
-  //     Map<String, dynamic> updatedfield = {};
-  //     if (updatedUser.fullName != initialUser.fullName) {
-  //       updatedfield['fullname'] = updatedUser.fullName;
-  //     }
-  //     if (updatedUser.username != initialUser.username) {
-  //       updatedfield['username'] = updatedUser.username;
-  //     }
-  //     if (updatedUser.bio != initialUser.bio) {
-  //       updatedfield['bio'] = updatedUser.bio;
-  //     }
-  //     if (updateProfilePicture != initialUser.profilePicture) {
-  //       updatedfield['profile_picture'] = updateProfilePicture;
-  //     }
-  //      if (updateCoverPicture != initialUser.coverPic) {
-  //       updatedfield['cover_photo'] = updateCoverPicture;
-  //     }
-
-  //     var response = await client.patch(Uri.parse(updateUserDetailsurl),
-  //         body: jsonEncode(updatedfield),
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //           'Authorization': 'Bearer $token',
-  //         });
-  //     debugPrint('update user status: ${response.statusCode}');
-  //     if (response.statusCode == 201) {
-  //       return 'success';
-  //     }
-  //     if (response.statusCode == 404) {
-  //       return 'username-exists';
-  //     }
-  //     return '';
-  //   } catch (e) {
-  //     debugPrint('Update User Error: $e');
-  //     return '';
-  //   }
-  // }
   static updateUserDetails(String username, String fullname, String? bio, profilePic,
       coverpic) async {
     var client = http.Client();

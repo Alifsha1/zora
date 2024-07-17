@@ -6,11 +6,14 @@ import 'package:zora/presentaion/pages/user_post_images_showing/widget/user_post
 
 class UsersPostImages extends StatefulWidget {
   final UserModel? userModel;
+
   final int? index;
+  final String title;
   const UsersPostImages({
     super.key,
     required this.userModel,
     required this.index,
+    required this.title,
   });
 
   @override
@@ -30,7 +33,7 @@ class _UsersPostImagesState extends State<UsersPostImages> {
             NormalBondTitles(titles: widget.userModel!.username!),
             // ignore: prefer_const_constructors
             BoldTitles(
-              titles: 'Posts',
+              titles: widget.title,
               color: kblack,
               fontsize: 15,
             )

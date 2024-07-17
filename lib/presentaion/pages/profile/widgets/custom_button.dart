@@ -33,7 +33,7 @@ class CustomButtonForProfile extends StatelessWidget {
             child: Container(
               width: mediawidth / 2.15,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: kwhite,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: const Padding(
@@ -62,7 +62,7 @@ class CustomButtonForProfile extends StatelessWidget {
             child: Container(
               width: mediawidth / 2.15,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: kwhite,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: const Padding(

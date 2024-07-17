@@ -12,7 +12,7 @@ import 'package:zora/presentaion/Widgets/text_form_field.dart';
 import 'package:zora/presentaion/bloc/edit_profile/edit_profile_bloc.dart';
 import 'package:zora/presentaion/bloc/image_picker/image_picker_bloc.dart';
 import 'package:zora/presentaion/pages/edit_profile/widget/functions.dart';
-import 'package:zora/presentaion/pages/user_profile/profile_screen.dart';
+import 'package:zora/presentaion/pages/profile/profile_screen.dart';
 
 class EditProfileWidget extends StatefulWidget {
   const EditProfileWidget({
@@ -44,8 +44,7 @@ File? profileImage;
 File? coverImage;
 
 class _EditProfileWidgetState extends State<EditProfileWidget> {
-  // List<AssetEntity> selectedprofileImage = [];
-  // List<AssetEntity> selectedcoverImage = [];
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -97,7 +96,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 image: widget.user.coverPic == ""
                                     ? coverImage == null
                                         ? const AssetImage(
-                                            'assets/images/placeholder cover.png')
+                                            'assets/images/placeholdercover.jpg')
                                         : Image.file(coverImage!).image
                                     : NetworkImage(widget.user.coverPic!),
                                 fit: BoxFit.cover,
