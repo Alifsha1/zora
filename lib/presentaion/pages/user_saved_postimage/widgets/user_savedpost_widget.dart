@@ -1,20 +1,19 @@
 import 'dart:developer';
-
 import 'package:card_swiper/card_swiper.dart';
-import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 import 'package:zora/core/navigators/navigators.dart';
-import 'package:zora/core/style/colors/colors.dart';
+import 'package:zora/core/utils/format_time_date.dart';
 import 'package:zora/data/models/post_model/post_model.dart';
 import 'package:zora/data/models/user_model/user_model.dart';
-import 'package:zora/presentaion/bloc/delete_post/delete_post_bloc.dart';
 import 'package:zora/presentaion/bloc/save_Unsave_post/save_un_save_post_bloc.dart';
 import 'package:zora/presentaion/bloc/saved_posts/saved_posts_bloc.dart';
 import 'package:zora/presentaion/bloc/user_profile/user_profile_bloc.dart';
+import 'package:zora/presentaion/pages/home_screen/sections/like_com_sec.dart';
 import 'package:zora/presentaion/pages/profile/widgets/image_preview.dart';
+import 'package:zora/presentaion/pages/user_saved_postimage/widgets/pop_up_menu_widget.dart';
+import 'package:zora/presentaion/pages/user_saved_postimage/widgets/user_by_id.dart';
 
 class UserSavedpostWidget extends StatefulWidget {
   final UserModel userModel;
@@ -43,7 +42,7 @@ class _UserSavedpostWidgetState extends State<UserSavedpostWidget> {
   @override
   void initState() {
     // context.read<DeletePostBloc>();
-    posts = widget.savedpost ?? [];
+    posts = widget.savedpost ;
     log('${widget.index}');
     SchedulerBinding.instance.addPostFrameCallback(
       (_) {
@@ -55,7 +54,7 @@ class _UserSavedpostWidgetState extends State<UserSavedpostWidget> {
     super.initState();
   }
 
-  void UnsavePost(String postId) {
+  void unsavePost(String postId) {
     setState(() {
       posts.removeWhere((post) => post!.id == postId);
     });
@@ -63,7 +62,7 @@ class _UserSavedpostWidgetState extends State<UserSavedpostWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.read<SavedPostsBloc>().add(GetSavedPostEvent());
+    // context.read<SavedPostsBloc>().add(GetSavedPostEvent());
     return BlocConsumer<SavedPostsBloc, SavedPostsState>(
       listener: (context, state) {},
       builder: (context, state) {
@@ -140,157 +139,46 @@ class _UserSavedpostWidgetState extends State<UserSavedpostWidget> {
                       Positioned(
                         top: 20,
                         left: 20,
-                        child: Container(
-                          height: widget.mediaheight * 0.07,
-                          width: widget.mediawidth * 0.4,
-                          decoration: BoxDecoration(
-                              color: Colors.transparent.withOpacity(.5),
-                              borderRadius: BorderRadius.circular(30)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(7.0),
-                            child: Row(
-                              children: [
-                                CircleAvatar(
-                                  radius: 23,
-                                  backgroundColor: Colors.white,
-                                  backgroundImage: widget.savedpost[index]!
-                                                  .user!.profilePicture ==
-                                              null ||
-                                          widget.savedpost[index]!.user!
-                                              .profilePicture!.isEmpty
-                                      ? const AssetImage(
-                                          'assets/images/placeholderimage.jpg')
-                                      : NetworkImage(widget
-                                          .savedpost[index]!
-                                          .user!
-                                          .profilePicture!) as ImageProvider,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      widget.savedpost[index]!.user!.username!,
-                                      style: const TextStyle(
-                                        color: kwhite,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    Text(
-                                      time,
-                                      style: const TextStyle(
-                                        color: kwhite,
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
+                        child: UserByIdName(
+                            mediaheight: widget.mediaheight,
+                            mediawidth: widget.mediawidth,
+                            backgroundImage:
+                                widget.savedpost[index]!.user!.profilePicture ==
+                                            null ||
+                                        widget.savedpost[index]!.user!
+                                            .profilePicture!.isEmpty
+                                    ? const AssetImage(
+                                        'assets/images/placeholderimage.jpg')
+                                    : NetworkImage(widget
+                                        .savedpost[index]!
+                                        .user!
+                                        .profilePicture!) as ImageProvider,
+                            username: widget.savedpost[index]!.user!.username!,
+                            time: time),
                       ),
                       Positioned(
                         top: 20,
                         right: 20,
-                        child: CircleAvatar(
-                            radius: 23,
-                            backgroundColor: Colors.transparent.withOpacity(.5),
-                            child: Builder(builder: (BuildContext context) {
-                              return PopupMenuButton<String>(
-                                  icon: const Icon(
-                                    Icons.more_vert,
-                                    color: kwhite,
-                                  ),
-                                  color: Colors.transparent.withOpacity(0.5),
-                                  onSelected: (String value) {},
-                                  itemBuilder: (BuildContext context) {
-                                    return [
-                                      PopupMenuItem(
-                                        onTap: () {
-                                          context
-                                              .read<SaveUnSavePostBloc>()
-                                              .add(UnsavePostEvent(
-                                                  postid: widget
-                                                      .savedpost[index]!.id!));
-                                          UnsavePost(
-                                              widget.savedpost[index]!.id!);
-                                          context
-                                              .read<SavedPostsBloc>()
-                                              .add(GetSavedPostEvent());
-                                        },
-                                        value: 'UnSave',
-                                        child: Text(
-                                          'UnSave',
-                                          style: TextStyle(color: kwhite),
-                                        ),
-                                      ),
-                                      PopupMenuItem(
-                                        onTap: () {},
-                                        value: 'Report',
-                                        child: const Text(
-                                          'Report',
-                                          style: TextStyle(color: kwhite),
-                                        ),
-                                      ),
-                                    ];
-                                  });
-                            })),
-                      ),
-                      const Positioned(
-                        bottom: 50,
-                        left: 20,
-                        child: Icon(
-                          FeatherIcons.heart,
-                          size: 25,
-                          color: kwhite,
-                        ),
-                      ),
-                      const Positioned(
-                        bottom: 50,
-                        left: 50,
-                        child: Text(
-                          '3568',
-                          style: TextStyle(
-                            color: kwhite,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      const Positioned(
-                        bottom: 50,
-                        left: 100,
-                        child: Icon(
-                          FeatherIcons.messageCircle,
-                          size: 25,
-                          color: kwhite,
-                        ),
-                      ),
-                      const Positioned(
-                        bottom: 50,
-                        left: 130,
-                        child: Text(
-                          '3568',
-                          style: TextStyle(
-                            color: kwhite,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
+                        child: PopUpMenuWidgetButton(
+                          buttontxt: 'Unsave',
+                          txt2: 'Report',
+                          onTap1: () {
+                            context.read<SaveUnSavePostBloc>().add(
+                                UnsavePostEvent(
+                                    postid: widget.savedpost[index]!.id!));
+                            unsavePost(widget.savedpost[index]!.id!);
+                            context
+                                .read<SavedPostsBloc>()
+                                .add(GetSavedPostEvent());
+                          },
                         ),
                       ),
                       Positioned(
-                        bottom: 20,
-                        left: 20,
-                        child: Text(
-                          post.description ?? '',
-                          style: const TextStyle(
-                            color: kwhite,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        child: LikeComSecWidget(
+                            user: widget.userModel, post: post),
                       ),
                     ],
                   ),
@@ -299,25 +187,5 @@ class _UserSavedpostWidgetState extends State<UserSavedpostWidget> {
         });
       },
     );
-  }
-
-  String formatTimeAgo(String dateTimeString) {
-    DateTime dateTime = DateTime.parse(dateTimeString);
-    final now = DateTime.now();
-    final difference = now.difference(dateTime);
-
-    if (difference.inDays > 7) {
-      return DateFormat('yMMMd').format(dateTime); // e.g., Jan 1, 2024
-    } else if (difference.inDays >= 2) {
-      return '${difference.inDays} days ago';
-    } else if (difference.inDays >= 1) {
-      return 'yesterday';
-    } else if (difference.inHours >= 1) {
-      return '${difference.inHours} hours ago';
-    } else if (difference.inMinutes >= 1) {
-      return '${difference.inMinutes} minutes ago';
-    } else {
-      return 'just now';
-    }
   }
 }

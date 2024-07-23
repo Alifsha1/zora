@@ -9,6 +9,8 @@ final class GetSavedPostLoadingState extends SavedPostsState {}
 
 final class GetSavedPostSuccessState extends SavedPostsState {
   final List<PostModel?> savedposts;
-  GetSavedPostSuccessState({required this.savedposts});
+  final List<String?> savedpostids;
+  GetSavedPostSuccessState( {required this.savedposts,required this.savedpostids,});
 }
-final class GetSavedPostErrorState extends SavedPostsState{}
+
+final class GetSavedPostErrorState extends SavedPostsState {}

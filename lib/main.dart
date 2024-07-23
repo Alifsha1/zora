@@ -26,6 +26,7 @@ import 'package:zora/presentaion/bloc/user_login/user_login_bloc.dart';
 import 'package:zora/presentaion/bloc/user_profile/user_profile_bloc.dart';
 import 'package:zora/presentaion/cubit/theme/theme_cubit.dart';
 import 'package:zora/presentaion/cubit/toggle_password/toggle_password.dart';
+import 'package:zora/presentaion/pages/home_screen/loading/postcontainer_loading.dart';
 import 'package:zora/presentaion/pages/splash_screen/splash_screen.dart';
 
 Future<void> main() async {
@@ -76,6 +77,7 @@ class MyApp extends StatelessWidget {
               ),
               debugShowCheckedModeBanner: false,
               home: SplashScreen(),
+            // home: PostcontainerLoading(),
             );
           },
         ));

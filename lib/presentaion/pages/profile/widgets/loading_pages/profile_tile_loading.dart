@@ -47,7 +47,7 @@ class ShowingProfileTileLoading extends StatelessWidget {
           ),
           Positioned(
             bottom: mediaheight * .16,
-            right: mediawidth * .3,
+            right: mediawidth * .27,
             child: Shimmer(
               gradient: shimmerGradient,
               child: CircleAvatar(
@@ -117,7 +117,7 @@ class ShowingProfileTileLoading extends StatelessWidget {
           ),
           Positioned(
             bottom: mediaheight * .03,
-            right: mediawidth * .19,
+            right: mediawidth * .13,
             child: Shimmer(
               gradient: shimmerGradient,
               child: Container(

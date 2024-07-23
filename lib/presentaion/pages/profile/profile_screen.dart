@@ -4,14 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zora/core/constants/contants.dart';
 import 'package:zora/presentaion/bloc/user_profile/user_profile_bloc.dart';
-import 'package:zora/presentaion/pages/edit_profile/edit_profile_page.dart';
 import 'package:zora/presentaion/pages/profile/widgets/account_info_post.dart';
 import 'package:zora/presentaion/pages/profile/widgets/custom_button.dart';
 import 'package:zora/presentaion/pages/profile/widgets/custom_tabbar.dart';
 import 'package:zora/presentaion/pages/profile/widgets/custom_tabbarview.dart';
 import 'package:zora/presentaion/pages/profile/widgets/loading_pages/profile_loading.dart';
 import 'package:zora/presentaion/pages/profile/widgets/showing_profile_widget.dart';
-import 'package:zora/presentaion/pages/settings/settings_page.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -81,9 +79,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                     child: CircularProgressIndicator(),
                   );
                 }
-                // return Center(
-                //   child: CircularProgressIndicator(),
-                // );
+                
                 return Container();
               },
             )

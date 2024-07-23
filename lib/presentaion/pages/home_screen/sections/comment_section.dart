@@ -8,14 +8,12 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 import 'package:intl/intl.dart';
 import 'package:zora/core/constants/contants.dart';
-import 'package:zora/core/navigators/navigators.dart';
 import 'package:zora/core/style/colors/colors.dart';
 import 'package:zora/core/utils/alerts.dart';
 import 'package:zora/data/models/post_model/post_model.dart';
 import 'package:zora/data/models/user_model/user_model.dart';
 import 'package:zora/presentaion/Widgets/normal_bond_titles.dart';
 import 'package:zora/presentaion/bloc/comment/comment_bloc.dart';
-import 'package:zora/presentaion/bloc/user_login/user_login_bloc.dart';
 import 'package:zora/presentaion/bloc/user_profile/user_profile_bloc.dart';
 
 class CommentSecWidget extends StatefulWidget {
@@ -28,7 +26,7 @@ class CommentSecWidget extends StatefulWidget {
 }
 
 class _CommentSecWidgetState extends State<CommentSecWidget>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -205,10 +203,10 @@ class _CommentSecWidgetState extends State<CommentSecWidget>
                                                       children: [
                                                         BoldTitles(
                                                             titles: comment
-                                                                .user.username
+                                                                .user.fullName
                                                                 .toString(),
                                                             fontsize: 16),
-                                                        //kwidht10,
+                                                        kwidht10,
                                                         NormalBondTitles(
                                                           titles: time,
                                                           color: kgrey,

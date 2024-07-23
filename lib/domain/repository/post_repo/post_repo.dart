@@ -199,7 +199,7 @@ class PostRepo {
     }
   }
 
-  static Future<String> savepost(String postid) async {
+  static Future<String> savepost(String? postid) async {
     var client = http.Client();
     String token = await UserToken.getToken();
     String saveposturl =
@@ -222,7 +222,7 @@ class PostRepo {
     }
   }
 
-  static Future<String> unsavepost(String postid) async {
+  static Future<String> unsavepost(String? postid) async {
     var client = http.Client();
     String token = await UserToken.getToken();
     String unsaveposturl =

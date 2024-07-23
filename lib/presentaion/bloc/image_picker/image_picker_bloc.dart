@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/physics.dart';
 import 'package:meta/meta.dart';
 
 part 'image_picker_event.dart';
@@ -13,6 +14,7 @@ class ImagePickerBloc extends Bloc<ImagePickerEvent, ImagePickerState> {
   ImagePickerBloc() : super(ImagePickerInitial()) {
     on<AddProfilePicEvent>(addImageEvent);
     on<AddCoverPicEvent>(addCoverPicEvent);
+    on<ResetImagePickerEvent>(resetImagePickerEvent);
   }
   FutureOr<void> addImageEvent(
       AddProfilePicEvent event, Emitter<ImagePickerState> emit) {
@@ -22,5 +24,10 @@ class ImagePickerBloc extends Bloc<ImagePickerEvent, ImagePickerState> {
   FutureOr<void> addCoverPicEvent(
       AddCoverPicEvent event, Emitter<ImagePickerState> emit) {
     emit(CoverPicImageSuccessState(image: event.image));
+  }
+
+  FutureOr<void> resetImagePickerEvent(
+      ResetImagePickerEvent event, Emitter<ImagePickerState> emit) {
+    emit(ImagePickerInitial()); 
   }
 }

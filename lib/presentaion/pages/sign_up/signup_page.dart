@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:zora/core/constants/contants.dart';
 import 'package:zora/core/utils/alerts.dart';
 import 'package:zora/core/utils/validation.dart';
 import 'package:zora/presentaion/Widgets/elevated_button.dart';
@@ -37,7 +38,7 @@ class _SignUpPageState extends State<SignUpPage> {
         body: BlocListener<SignUpBlocBloc, SignUpBlocState>(
       listener: (context, state) {
         if (state is USerOtpSucceccState) {
-              customSnackbar(context, "Otp send successfully",Colors.green);
+          customSnackbar(context, "Otp send successfully", Colors.green);
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -80,7 +81,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   child: Column(
                     children: [
                       Textformfieldlog(
-                         label: Text('full name'),
+                        label: Text('full name'),
                         hint: 'Full name',
                         controller: fullnameController,
                         validator: (val) {
@@ -90,9 +91,9 @@ class _SignUpPageState extends State<SignUpPage> {
                           return null;
                         },
                       ),
-                      sizedboxconst20(),
+                      kheight20,
                       Textformfieldlog(
-                         label: Text('Username'),
+                        label: Text('Username'),
                         hint: ' Username',
                         controller: usernameController,
                         validator: (val) {
@@ -110,9 +111,9 @@ class _SignUpPageState extends State<SignUpPage> {
                           return null;
                         },
                       ),
-                      sizedboxconst20(),
+                      kheight20,
                       Textformfieldlog(
-                         label: Text('email'),
+                        label: Text('email'),
                         hint: 'email',
                         controller: emailController,
                         validator: (val) {
@@ -123,9 +124,9 @@ class _SignUpPageState extends State<SignUpPage> {
                           return null;
                         },
                       ),
-                      sizedboxconst20(),
+                      kheight20,
                       Textformfieldlog(
-                         label: Text('phone no'),
+                        label: Text('phone no'),
                         hint: 'phone number',
                         controller: phonenumberController,
                         validator: (val) {
@@ -135,9 +136,9 @@ class _SignUpPageState extends State<SignUpPage> {
                           return null;
                         },
                       ),
-                      sizedboxconst20(),
+                      kheight20,
                       Textformfieldlog(
-                         label: Text('create password'),
+                        label: Text('create password'),
                         hint: 'Create password',
                         controller: passwordController,
                         validator: (val) {
@@ -147,10 +148,9 @@ class _SignUpPageState extends State<SignUpPage> {
                           return null;
                         },
                       ),
-                      sizedboxconst20(),
+                      kheight20,
                       Textformfieldlog(
-                      
-                         label: Text('confirm password'),
+                        label: Text('confirm password'),
                         hint: 'confirm passwpord',
                         controller: confirmpasswordController,
                         validator: (val) {
@@ -173,15 +173,15 @@ class _SignUpPageState extends State<SignUpPage> {
                               context.read<SignUpBlocBloc>().add(
                                   UserOtpVerificationEvent(
                                       email: emailController.text));
-                           
                             }
-                               //customSnackbar(context, "Otp send successfully",Colors.green);
+                            //customSnackbar(context, "Otp send successfully",Colors.green);
                           } else {
-                            customSnackbar(context, "Password doesn't match",Colors.red);
+                            customSnackbar(
+                                context, "Password doesn't match", Colors.red);
                           }
                         },
                       ),
-                      sizedboxconst10(),
+                      kheight10,
                       Row(
                         children: [
                           Expanded(
@@ -199,14 +199,14 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                         ],
                       ),
-                      sizedboxconst10(),
+                      kheight10,
                       Buttonelevated(
                         mediawidth: mediawidth,
                         buttontext: 'Sign up with google',
                       ),
-                      sizedboxconst10(),
+                      kheight10,
                       LoginWidget(),
-                      sizedboxconst10(),
+                      kheight10,
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -237,17 +237,4 @@ class _SignUpPageState extends State<SignUpPage> {
       ),
     ));
   }
-
-  SizedBox sizedboxconst20() {
-    return SizedBox(
-      height: 20,
-    );
-  }
-
-  SizedBox sizedboxconst10() {
-    return SizedBox(
-      height: 10,
-    );
-  }
 }
-

@@ -17,3 +17,5 @@ final class UploadProfilePicCloudinary extends ImagePickerEvent {
   final dynamic image;
   UploadProfilePicCloudinary({required this.image});
 }
+
+final class ResetImagePickerEvent extends ImagePickerEvent {}

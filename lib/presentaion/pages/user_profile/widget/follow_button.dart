@@ -118,11 +118,6 @@ class _FollowButtonState extends State<FollowButton> {
   bool isFollowing = false;
   String? userid;
 
-  // void toggleFollow() {
-  //   setState(() {
-  //     isFollowing = !isFollowing;
-  //   });
-  // }
   @override
   void initState() {
     //log('init working or not${widget.userModel.following}');

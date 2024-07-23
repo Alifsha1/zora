@@ -20,8 +20,12 @@ class SavedPostsBloc extends Bloc<SavedPostsEvent, SavedPostsState> {
     List<PostModel?> savedposts = await PostRepo.savedposts();
     if (savedposts.isNotEmpty) {
       log("saved post length${savedposts.length.toString()}");
-      emit(GetSavedPostSuccessState(savedposts: savedposts));
+      List<String?> savedPostIds = savedposts.map((post) => post?.id).toList();
+      log('saved posts listss $savedPostIds');
+      emit(GetSavedPostSuccessState(
+          savedposts: savedposts, savedpostids: savedPostIds));
     } else {
+      log('Error state');
       emit(GetSavedPostErrorState());
     }
   }

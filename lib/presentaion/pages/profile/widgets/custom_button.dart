@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zora/core/constants/contants.dart';
 import 'package:zora/core/icons/customiconsflutter_icons.dart';
 import 'package:zora/core/style/colors/colors.dart';
 import 'package:zora/data/models/user_model/user_model.dart';
+import 'package:zora/presentaion/bloc/image_picker/image_picker_bloc.dart';
 import 'package:zora/presentaion/pages/edit_profile/edit_profile_page.dart';
 import 'package:zora/presentaion/pages/settings/settings_page.dart';
 
@@ -24,6 +26,7 @@ class CustomButtonForProfile extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
+              context.read<ImagePickerBloc>().add(ResetImagePickerEvent());
               Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -56,8 +59,10 @@ class CustomButtonForProfile extends StatelessWidget {
           kwidht10,
           GestureDetector(
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const SettingsScreen()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SettingsScreen()));
             },
             child: Container(
               width: mediawidth / 2.15,

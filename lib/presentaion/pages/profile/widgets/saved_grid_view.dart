@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zora/core/navigators/navigators.dart';
 import 'package:zora/data/models/user_model/user_model.dart';
 import 'package:zora/presentaion/bloc/saved_posts/saved_posts_bloc.dart';
-import 'package:zora/presentaion/pages/user_post_images_showing/user_post.dart';
+import 'package:zora/presentaion/pages/profile/widgets/loading_pages/post_grid_loading.dart';
 import 'package:zora/presentaion/pages/user_saved_postimage/user_saved_postimage.dart';
 
 class SavedGridView extends StatefulWidget {
@@ -25,9 +25,12 @@ class _SavedGridViewState extends State<SavedGridView> {
 
   @override
   Widget build(BuildContext context) {
-    context.read<SavedPostsBloc>().add(GetSavedPostEvent());
+    // context.read<SavedPostsBloc>().add(GetSavedPostEvent());
     return BlocBuilder<SavedPostsBloc, SavedPostsState>(
         builder: (context, state) {
+      if (state is GetSavedPostLoadingState) {
+       
+      }
       if (state is GetSavedPostSuccessState) {
         log('working');
         return SingleChildScrollView(
@@ -69,9 +72,8 @@ class _SavedGridViewState extends State<SavedGridView> {
           child: Text('error posts'),
         );
       }
-      return Center(
-        child: Text('no posts'),
-      );
+      return const PostGridLoading();
+      
     });
   }
 }

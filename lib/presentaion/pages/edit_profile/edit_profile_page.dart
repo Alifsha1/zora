@@ -1,6 +1,11 @@
+import 'dart:developer';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zora/data/models/user_model/user_model.dart';
 import 'package:zora/presentaion/Widgets/zora.dart';
+import 'package:zora/presentaion/bloc/edit_profile/edit_profile_bloc.dart';
 import 'package:zora/presentaion/pages/edit_profile/widget/edip_profile_widget.dart';
 
 class EditProfileScreen extends StatefulWidget {
@@ -17,6 +22,19 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   final TextEditingController bioController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
+  File? profileImage;
+// File? image;
+  File? coverImage;
+  String profileImageUrl = '';
+  String coverpicImageUrl = '';
+
+  // @override
+  // void initState() {
+  //   profileImageUrl = widget.user.profilePicture ?? '';
+  //   coverpicImageUrl = widget.user.coverPic ?? '';
+  //   log('Profile Image Url: $profileImageUrl');
+  //   super.initState();
+  // }
   @override
   void initState() {
     fullnameController.text = widget.user.fullName!;
@@ -24,6 +42,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     bioController.text = widget.user.bio!;
     emailController.text = widget.user.bio!;
     phoneController.text = widget.user.phonenumber.toString();
+    profileImageUrl = widget.user.profilePicture ?? '';
+    coverpicImageUrl = widget.user.coverPic ?? '';
+    log('Profile Image Url: $profileImageUrl');
     super.initState();
   }
 
@@ -33,9 +54,31 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     final mediaheight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        title: const MainHeading(heading: 'Edit Profile'),
-        backgroundColor: const Color.fromARGB(255, 228, 246, 246),
-      ),
+          title: const MainHeading(heading: 'Edit Profile'),
+          backgroundColor: const Color.fromARGB(255, 228, 246, 246),
+          actions: [
+            GestureDetector(
+                onTap: () {
+                  context.read<EditProfileBloc>().add(EditUserDetailEvent(
+                        username: usernameController.text,
+                        fullname: fullnameController.text,
+                        bio: bioController.text,
+                        profilePicture:
+                            profileImage ?? widget.user.profilePicture,
+                        coverPicture: coverImage ?? widget.user.coverPic,
+                      ));
+                },
+                child: const Padding(
+                  padding: EdgeInsets.all(15.0),
+                  child: Text(
+                    'Save',
+                    style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ))
+          ]),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -46,8 +89,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             fullnameController: fullnameController,
             usernameController: usernameController,
             bioController: bioController,
-            emailController: emailController,
-            phonenoController: phoneController,
+  
+            coverimage: coverImage,
+            coverpicImageUrl: coverpicImageUrl,
+            profileImageUrl: profileImageUrl,
+            profileimage: profileImage,
           ),
         ),
       ),

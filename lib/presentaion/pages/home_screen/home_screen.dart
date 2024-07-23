@@ -1,9 +1,7 @@
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:zora/presentaion/Widgets/zora.dart';
 import 'package:zora/presentaion/pages/home_screen/sections/post_section.dart';
-import 'package:zora/presentaion/pages/home_screen/widgets/post_container.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

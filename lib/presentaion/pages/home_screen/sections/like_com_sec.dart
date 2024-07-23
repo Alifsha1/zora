@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zora/core/constants/contants.dart';
 import 'package:zora/core/style/colors/colors.dart';
@@ -24,160 +25,186 @@ class LikeComSecWidget extends StatefulWidget {
 }
 
 class _LikeComSecWidgetState extends State<LikeComSecWidget> {
+  bool expand = false;
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        BlocBuilder<UserProfileBloc, UserProfileState>(
-          //  bloc: context.read<UserProfileBloc>(),
-          builder: (context, states) {
-            if (states is UserProfileSuccessfulState) {
-              return Row(
-                children: [
-                  Row(
-                    children: [
-                      BlocBuilder<LikePostBloc, LikePostState>(
-                        builder: (context, state) {
-                          // if (post.likes!.contains(user.id)) {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          BlocBuilder<UserProfileBloc, UserProfileState>(
+            //  bloc: context.read<UserProfileBloc>(),
+            builder: (context, states) {
+              if (states is UserProfileSuccessfulState) {
+                return Row(
+                  children: [
+                    Row(
+                      children: [
+                        BlocBuilder<LikePostBloc, LikePostState>(
+                          builder: (context, state) {
+                            // if (post.likes!.contains(user.id)) {
 
-                          if (state is LikePostSuccessState) {
-                            if (widget.post.likes!.contains(states.user.id)) {
-                              return Row(
-                                children: [
-                                  GestureDetector(
-                                    onTap: () {
-                                      widget.post.likes!.remove(states.user.id);
-                                      log('Post Likes: ${widget.post.likes} User Id: ${states.user.id}');
-                                      context.read<LikePostBloc>().add(
-                                          UnLikePostFetchEvent(
-                                              postid: widget.post.id!));
-                                    },
-                                    child: const Icon(
-                                      CupertinoIcons.heart_fill,
-                                      size: 25,
-                                      color: kred,
+                            if (state is LikePostSuccessState) {
+                              if (widget.post.likes!.contains(states.user.id)) {
+                                return Row(
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        widget.post.likes!
+                                            .remove(states.user.id);
+                                        log('Post Likes: ${widget.post.likes} User Id: ${states.user.id}');
+                                        context.read<LikePostBloc>().add(
+                                            UnLikePostFetchEvent(
+                                                postid: widget.post.id!));
+                                      },
+                                      child: const Icon(
+                                        CupertinoIcons.heart_fill,
+                                        size: 25,
+                                        color: kred,
+                                      ),
                                     ),
-                                  ),
-                                  Text(
-                                    widget.post.likes == null ||
-                                            widget.post.likes!.isEmpty
-                                        ? 'No Likes'
-                                        : widget.post.likes!.length.toString(),
-                                    style: const TextStyle(
-                                      color: kwhite,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
+                                    Text(
+                                      widget.post.likes == null ||
+                                              widget.post.likes!.isEmpty
+                                          ? 'No Likes'
+                                          : widget.post.likes!.length
+                                              .toString(),
+                                      style: const TextStyle(
+                                        color: kwhite,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              );
+                                  ],
+                                );
+                              }
                             }
-                          }
-                          if (state is UnLikePostSuccessState) {
-                            if (!widget.post.likes!.contains(states.user.id)) {
-                              return Row(
-                                children: [
-                                  GestureDetector(
-                                    onDoubleTap: () {
-                                      widget.post.likes!.add(states.user.id);
-                                      log('Post Likes: ${widget.post.likes} User Id: ${states.user.id}');
-                                      context.read<LikePostBloc>().add(
-                                          LikePostFetchEvent(
-                                              postid: widget.post.id!));
-                                    },
-                                    child: const Icon(
-                                      CupertinoIcons.heart,
-                                      size: 25,
-                                      color: kwhite,
+                            if (state is UnLikePostSuccessState) {
+                              if (!widget.post.likes!
+                                  .contains(states.user.id)) {
+                                return Row(
+                                  children: [
+                                    GestureDetector(
+                                      onDoubleTap: () {
+                                        widget.post.likes!.add(states.user.id);
+                                        log('Post Likes: ${widget.post.likes} User Id: ${states.user.id}');
+                                        context.read<LikePostBloc>().add(
+                                            LikePostFetchEvent(
+                                                postid: widget.post.id!));
+                                      },
+                                      child: const Icon(
+                                        CupertinoIcons.heart,
+                                        size: 25,
+                                        color: kwhite,
+                                      ),
                                     ),
-                                  ),
-                                  Text(
-                                    widget.post.likes == null ||
-                                            widget.post.likes!.isEmpty
-                                        ? 'No Likes'
-                                        : widget.post.likes!.length.toString(),
-                                    style: const TextStyle(
-                                      color: kwhite,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
+                                    Text(
+                                      widget.post.likes == null ||
+                                              widget.post.likes!.isEmpty
+                                          ? 'No Likes'
+                                          : widget.post.likes!.length
+                                              .toString(),
+                                      style: const TextStyle(
+                                        color: kwhite,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              );
+                                  ],
+                                );
+                              }
                             }
-                          }
-                          return Row(
-                            children: [
-                              GestureDetector(
-                                onTap: () {
-                                  widget.post.likes!.remove(states.user.id);
-                                  log('Post Likes: ${widget.post.likes} User Id: ${states.user.id}');
-                                  context.read<LikePostBloc>().add(
-                                      UnLikePostFetchEvent(
-                                          postid: widget.post.id!));
-                                },
-                                onDoubleTap: () {
-                                  widget.post.likes!.add(states.user.id);
-                                  log('Post Likes: ${widget.post.likes} User Id: ${states.user.id}');
-                                  context.read<LikePostBloc>().add(
-                                      LikePostFetchEvent(
-                                          postid: widget.post.id!));
-                                },
-                                child:
-                                    widget.post.likes!.contains(states.user.id)
-                                        ? const Icon(
-                                            CupertinoIcons.heart_fill,
-                                            size: 25,
-                                            color: kred,
-                                          )
-                                        : const Icon(
-                                            CupertinoIcons.heart,
-                                            size: 25,
-                                            color: kwhite,
-                                          ),
-                              ),
-                              Text(
-                                widget.post.likes == null ||
-                                        widget.post.likes!.isEmpty
-                                    ? 'No Likes'
-                                    : widget.post.likes!.length.toString(),
-                                style: const TextStyle(
-                                  color: kwhite,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
+                            return Row(
+                              children: [
+                                GestureDetector(
+                                  onTap: () {
+                                    widget.post.likes!.remove(states.user.id);
+                                    log('Post Likes: ${widget.post.likes} User Id: ${states.user.id}');
+                                    context.read<LikePostBloc>().add(
+                                        UnLikePostFetchEvent(
+                                            postid: widget.post.id!));
+                                  },
+                                  onDoubleTap: () {
+                                    widget.post.likes!.add(states.user.id);
+                                    log('Post Likes: ${widget.post.likes} User Id: ${states.user.id}');
+                                    context.read<LikePostBloc>().add(
+                                        LikePostFetchEvent(
+                                            postid: widget.post.id!));
+                                  },
+                                  child: widget.post.likes!
+                                          .contains(states.user.id)
+                                      ? const Icon(
+                                          CupertinoIcons.heart_fill,
+                                          size: 25,
+                                          color: kred,
+                                        )
+                                      : const Icon(
+                                          CupertinoIcons.heart,
+                                          size: 25,
+                                          color: kwhite,
+                                        ),
                                 ),
-                              ),
-                            ],
-                          );
-                        },
-                      ),
-                    ],
-                  ),
-                  kwidht10,
-                  CommentSecWidget(user: widget.user, post: widget.post),
-                ],
-              );
-            }
-            return Container();
-          },
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 20, bottom: 10),
-          child: Row(
-            children: [
-              Text(
-                widget.post.description!,
+                                Text(
+                                  widget.post.likes == null ||
+                                          widget.post.likes!.isEmpty
+                                      ? 'No Likes'
+                                      : widget.post.likes!.length.toString(),
+                                  style: const TextStyle(
+                                    color: kwhite,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                    kwidht10,
+                    CommentSecWidget(user: widget.user, post: widget.post),
+                  ],
+                );
+              }
+              return Container();
+            },
+          ),
+          InkWell(
+            onTap: () {
+              setState(() {
+                expand = !expand;
+              });
+            },
+            child: AnimatedContainer(
+              padding: const EdgeInsets.only(
+                left: 25,
+                right: 15,
+              ),
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(35),
+                  bottomRight: Radius.circular(35),
+                ),
+                color: expand ? Colors.black.withOpacity(0.5) : null,
+              ),
+              height: expand ? 100 : 30,
+              duration: const Duration(milliseconds: 200),
+              child: Text(
+                widget.post.description!.trim(),
                 style: const TextStyle(
                   color: kwhite,
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-            ],
-          ),
-        )
-      ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }
