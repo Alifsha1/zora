@@ -18,9 +18,12 @@ class ProfileFetchByIdBloc
       Emitter<ProfileFetchByIdState> emit) async {
     emit(ProfileFetchByIdLoadingState());
     final response = await UserRepo.getuserdetails(event.userid);
+
     if (response != null) {
+      UserModel user = response.userModel;
+      user.posts = response.postmodel;
       emit(ProfileFetchByIdSuccessState(
-        user: response.userModel,
+        user: user,
         posts: response.postmodel,
       ));
     } else if (response == null) {

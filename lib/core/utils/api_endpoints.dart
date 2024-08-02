@@ -21,4 +21,6 @@ class ApiEndPoints {
   static String savepost = '/save-post/';
   static String savedpost = '/saved-post';
   static String unsavepost = '/unsave-post/';
+  static String allusers = '/users';
+  static String search = '/search';
 }

@@ -1,10 +1,14 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zora/core/constants/contants.dart';
+import 'package:zora/presentaion/Widgets/normal_bond_titles.dart';
 import 'package:zora/presentaion/bloc/profile_fetch_by_id.dart/profile_fetch_by_id_bloc.dart';
 import 'package:zora/presentaion/bloc/user_profile/user_profile_bloc.dart';
 import 'package:zora/presentaion/pages/profile/widgets/account_info_post.dart';
 import 'package:zora/presentaion/pages/profile/widgets/loading_pages/profile_loading.dart';
+import 'package:zora/presentaion/pages/profile/widgets/post_view.dart';
 import 'package:zora/presentaion/pages/profile/widgets/showing_profile_widget.dart';
 import 'package:zora/presentaion/pages/user_profile/widget/follow_button.dart';
 
@@ -32,9 +36,11 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         child: Builder(
           builder: (context) {
             final stateA = context.watch<ProfileFetchByIdBloc>().state;
+
             final stateB = context.watch<UserProfileBloc>().state;
             if (stateB is UserProfileSuccessfulState) {
               if (stateA is ProfileFetchByIdSuccessState) {
+                log('user profile posts : ${stateA.posts.length.toString()}');
                 return ListView(
                   children: [
                     Column(
@@ -47,19 +53,27 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                           mediawidth: mediawidth,
                         ),
                         FollowButton(
+                          message: true,
                           mediawidth: mediawidth,
                           userModel: stateA.user,
                           currentuserid: stateB.user.id!,
+                          currentusermodel: stateB.user,
                         ),
                         AccountInfoPost(
                           mediaheight: mediaheight,
                           mediawidth: mediawidth,
                           userModel: stateA.user,
+                          posts: stateA.posts,
+                          // currentuserModel: stateB.user,
+                          // currentuserid: stateB.user.id!,
                         ),
                         // CustomTabBar(
                         //   tabController: tabController,
                         // ),
                         kheight5,
+                        NormalBondTitles(titles: 'Posts'),
+                        PostGridView(userModel: stateA.user)
+                        // UserPostsGridView(userModel: stateA.user,posts: stateA.posts,)
                         // CustomTabView(
                         //   tabController: tabController,
                         //   userModel: state.user,

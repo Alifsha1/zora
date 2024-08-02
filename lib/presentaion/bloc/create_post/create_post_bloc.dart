@@ -22,6 +22,8 @@ class CreatePostBloc extends Bloc<CreatePostEvent, CreatePostState> {
         event.description!, event.selectedimages, event.location!);
     if (result == 'success') {
       emit(AddPostSuccessState());
+    } else if (result == 'parameters-missing') {
+      emit(AddPostMissingfieldState());
     } else {
       emit(AddPostErrorState());
     }

@@ -13,4 +13,4 @@ final class GetSavedPostSuccessState extends SavedPostsState {
   GetSavedPostSuccessState( {required this.savedposts,required this.savedpostids,});
 }
 
-final class GetSavedPostErrorState extends SavedPostsState {}
+final class GetSavedPostEmptyState extends SavedPostsState {}

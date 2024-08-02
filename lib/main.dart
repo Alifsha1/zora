@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:zora/core/style/colors/colors.dart';
 import 'package:zora/presentaion/bloc/comment/comment_bloc.dart';
 import 'package:zora/presentaion/bloc/create_post/create_post_bloc.dart';
 import 'package:zora/presentaion/bloc/delete_post/delete_post_bloc.dart';
@@ -13,6 +14,7 @@ import 'package:zora/presentaion/bloc/edit_profile/edit_profile_bloc.dart';
 import 'package:zora/presentaion/bloc/folllow_unfollow.dart/follow_unfollow_user_bloc.dart';
 import 'package:zora/presentaion/bloc/forget_password/forget_password_bloc.dart';
 import 'package:zora/presentaion/bloc/get_all_post/get_all_post_bloc.dart';
+import 'package:zora/presentaion/bloc/get_all_users/get_all_users_bloc.dart';
 import 'package:zora/presentaion/bloc/image_picker/image_picker_bloc.dart';
 import 'package:zora/presentaion/bloc/like_post/like_post_bloc.dart';
 import 'package:zora/presentaion/bloc/post_/post_bloc.dart';
@@ -26,7 +28,6 @@ import 'package:zora/presentaion/bloc/user_login/user_login_bloc.dart';
 import 'package:zora/presentaion/bloc/user_profile/user_profile_bloc.dart';
 import 'package:zora/presentaion/cubit/theme/theme_cubit.dart';
 import 'package:zora/presentaion/cubit/toggle_password/toggle_password.dart';
-import 'package:zora/presentaion/pages/home_screen/loading/postcontainer_loading.dart';
 import 'package:zora/presentaion/pages/splash_screen/splash_screen.dart';
 
 Future<void> main() async {
@@ -66,18 +67,19 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context) => FollowUnfollowUserBloc()),
           BlocProvider(create: (context) => ProfileBloc()),
           BlocProvider(create: (context) => SaveUnSavePostBloc()),
-          BlocProvider(create: (context)=>SavedPostsBloc()),
+          BlocProvider(create: (context) => SavedPostsBloc()),
+          BlocProvider(create: (context) => GetAllUsersBloc()),
         ],
         child: BlocBuilder<ThemeCubit, ThemeMode>(
           builder: (context, ThemeMode mode) {
             return MaterialApp(
               theme: ThemeData(
                 fontFamily: 'Quick_sand',
-                scaffoldBackgroundColor: Color.fromARGB(255, 228, 246, 246),
+                scaffoldBackgroundColor: maincolor,
               ),
               debugShowCheckedModeBanner: false,
               home: SplashScreen(),
-            // home: PostcontainerLoading(),
+              // home: PostcontainerLoading(),
             );
           },
         ));

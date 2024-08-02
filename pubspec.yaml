@@ -33,6 +33,7 @@ dependencies:
   card_swiper: ^3.0.1
   cloudinary: ^1.2.0
   cupertino_icons: ^1.0.2
+  expandable_text: ^2.3.0
   feather_icons: ^1.2.0
   flutter:
     sdk: flutter

@@ -21,6 +21,7 @@ class PostAddScreen extends StatefulWidget {
   @override
   State<PostAddScreen> createState() => _PostAddScreenState();
 }
+
 class _PostAddScreenState extends State<PostAddScreen> {
   AssetPathEntity? selectedAlbums;
   List<AssetPathEntity> albumList = [];
@@ -45,6 +46,7 @@ class _PostAddScreenState extends State<PostAddScreen> {
     });
     super.initState();
   }
+
   Future pickAssets(
       {required int maxCount, required RequestType requestType}) async {
     final result =
@@ -57,6 +59,7 @@ class _PostAddScreenState extends State<PostAddScreen> {
       });
     }
   }
+
   @override
   Widget build(BuildContext context) {
     final mediawidth = MediaQuery.of(context).size.width;
@@ -91,6 +94,8 @@ class _PostAddScreenState extends State<PostAddScreen> {
           listener: (context, state) {
             if (state is AddPostSuccessState) {
               navigatorReplacement(const CustomNavBar(), context);
+            } else if (state is AddPostMissingfieldState) {
+              customSnackbar(context, "All fields are required", Colors.red);
             } else if (state is AddPostErrorState) {
               customSnackbar(context, "Oops..! Server unreachable", Colors.red);
             } else if (state is AddPostLoadingState) {}

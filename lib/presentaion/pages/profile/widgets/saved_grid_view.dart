@@ -3,7 +3,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zora/core/navigators/navigators.dart';
+import 'package:zora/core/style/colors/colors.dart';
 import 'package:zora/data/models/user_model/user_model.dart';
+import 'package:zora/presentaion/Widgets/normal_bond_titles.dart';
 import 'package:zora/presentaion/bloc/saved_posts/saved_posts_bloc.dart';
 import 'package:zora/presentaion/pages/profile/widgets/loading_pages/post_grid_loading.dart';
 import 'package:zora/presentaion/pages/user_saved_postimage/user_saved_postimage.dart';
@@ -67,9 +69,9 @@ class _SavedGridViewState extends State<SavedGridView> {
           ),
         );
       }
-      if (state is GetSavedPostErrorState) {
-        return Center(
-          child: Text('error posts'),
+      if (state is GetSavedPostEmptyState) {
+        return const Center(
+          child: NormalBondTitles(titles: 'No Saved posts',color: kblack,),
         );
       }
       return const PostGridLoading();

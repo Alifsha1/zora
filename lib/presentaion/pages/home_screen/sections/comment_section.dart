@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:expandable_text/expandable_text.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,11 +11,14 @@ import 'package:intl/intl.dart';
 import 'package:zora/core/constants/contants.dart';
 import 'package:zora/core/style/colors/colors.dart';
 import 'package:zora/core/utils/alerts.dart';
+import 'package:zora/core/utils/format_time_date.dart';
 import 'package:zora/data/models/post_model/post_model.dart';
 import 'package:zora/data/models/user_model/user_model.dart';
 import 'package:zora/presentaion/Widgets/normal_bond_titles.dart';
 import 'package:zora/presentaion/bloc/comment/comment_bloc.dart';
 import 'package:zora/presentaion/bloc/user_profile/user_profile_bloc.dart';
+import 'package:zora/presentaion/pages/home_screen/widgets/expand_comment_widget.dart';
+import 'package:zora/presentaion/pages/home_screen/widgets/expandable_text_container.dart';
 
 class CommentSecWidget extends StatefulWidget {
   final UserModel user;
@@ -61,6 +65,7 @@ class _CommentSecWidgetState extends State<CommentSecWidget>
     late final controller = SlidableController(this);
 
     return showModalBottomSheet(
+      backgroundColor: kwhite,
       useSafeArea: true,
       context: context,
       isScrollControlled: true,
@@ -70,6 +75,7 @@ class _CommentSecWidgetState extends State<CommentSecWidget>
         ),
       ),
       builder: (BuildContext context) {
+      //  final cmtboxwidth = MediaQuery.of(context).size.width;
         final bottompadding = MediaQuery.of(context).viewInsets.bottom;
         return BlocBuilder<UserProfileBloc, UserProfileState>(
           builder: (context, stateA) {
@@ -144,7 +150,8 @@ class _CommentSecWidgetState extends State<CommentSecWidget>
                                       // log(message)
                                       final time =
                                           formatTimeAgo(comment.createdAt);
-
+                                      // final isExpanded =
+                                      //     comment.comments.length > 10;
                                       return Slidable(
                                         key: ValueKey(index),
                                         controller: controller,
@@ -213,7 +220,11 @@ class _CommentSecWidgetState extends State<CommentSecWidget>
                                                         ),
                                                       ],
                                                     ),
-                                                    Text(comment.comments),
+                                                    SizedBox(
+                                                        width: mediawidth * 0.75,
+                                                        child: Text(
+                                                            comment.comments)),
+                                                    
                                                   ],
                                                 )
                                               ],
@@ -297,29 +308,5 @@ class _CommentSecWidgetState extends State<CommentSecWidget>
         );
       },
     );
-  }
-
-  String formatTimeAgo(String dateTimeString) {
-    try {
-      DateTime dateTime = DateTime.parse(dateTimeString);
-      final now = DateTime.now();
-      final difference = now.difference(dateTime);
-
-      if (difference.inDays > 7) {
-        return DateFormat('yMMMd').format(dateTime);
-      } else if (difference.inDays >= 2) {
-        return '${difference.inDays}days';
-      } else if (difference.inDays >= 1) {
-        return 'yesterday';
-      } else if (difference.inHours >= 1) {
-        return '${difference.inHours}hrs';
-      } else if (difference.inMinutes >= 1) {
-        return '${difference.inMinutes}m';
-      } else {
-        return 'now';
-      }
-    } catch (e) {
-      return 'Invalid date';
-    }
   }
 }

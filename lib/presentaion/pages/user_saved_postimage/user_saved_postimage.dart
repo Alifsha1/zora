@@ -3,7 +3,6 @@ import 'package:zora/core/style/colors/colors.dart';
 import 'package:zora/data/models/post_model/post_model.dart';
 import 'package:zora/data/models/user_model/user_model.dart';
 import 'package:zora/presentaion/Widgets/normal_bond_titles.dart';
-import 'package:zora/presentaion/pages/user_post_images_showing/widget/user_post_widget.dart';
 import 'package:zora/presentaion/pages/user_saved_postimage/widgets/user_savedpost_widget.dart';
 
 class UserSavedPostimage extends StatefulWidget {

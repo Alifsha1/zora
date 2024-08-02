@@ -41,14 +41,14 @@ class _PopUpMenuWidgetButtonState extends State<PopUpMenuWidgetButton> {
                       style: TextStyle(color: kwhite),
                     ),
                   ),
-                  PopupMenuItem(
-                    onTap: widget.onTap2,
-                    value: widget.txt2,
-                    child:  Text(
-                      widget.txt2,
-                      style: TextStyle(color: kwhite),
-                    ),
-                  ),
+                  // PopupMenuItem(
+                  //   onTap: widget.onTap2,
+                  //   value: widget.txt2,
+                  //   child:  Text(
+                  //     widget.txt2,
+                  //     style: TextStyle(color: kwhite),
+                  //   ),
+                  // ),
                 ];
               });
         }));

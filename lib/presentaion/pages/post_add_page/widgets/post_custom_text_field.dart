@@ -4,12 +4,18 @@ class PostCustomTexTField extends StatelessWidget {
   final Widget? prefix;
   final String hint;
   final int? maxline;
-  const PostCustomTexTField({
+  void Function()? onTap;
+  void Function(String)? onChanged;
+  void Function(String)? onFieldSubmitted;
+   PostCustomTexTField({
     super.key,
     required this.controller,
     this.prefix,
     required this.hint,
     this.maxline,
+    this.onTap,
+    this.onChanged,
+    this.onFieldSubmitted,
   });
 
   final TextEditingController controller;
@@ -17,6 +23,9 @@ class PostCustomTexTField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: onChanged,
+      onFieldSubmitted: onFieldSubmitted,
+      onTap: onTap,
       maxLines: maxline ?? 1,
       controller: controller,
       // validator: validator,

@@ -26,7 +26,7 @@ class SavedPostsBloc extends Bloc<SavedPostsEvent, SavedPostsState> {
           savedposts: savedposts, savedpostids: savedPostIds));
     } else {
       log('Error state');
-      emit(GetSavedPostErrorState());
+      emit(GetSavedPostEmptyState());
     }
   }
 }

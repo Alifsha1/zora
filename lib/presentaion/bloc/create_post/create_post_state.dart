@@ -7,3 +7,4 @@ final class CreatePostInitial extends CreatePostState {}
 class AddPostLoadingState extends CreatePostState{}
 class AddPostSuccessState extends CreatePostState{}
 class AddPostErrorState extends CreatePostState{}
+class AddPostMissingfieldState extends CreatePostState{}

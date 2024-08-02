@@ -63,6 +63,8 @@ class _ProfileScreenState extends State<ProfileScreen>
                         mediaheight: mediaheight,
                         mediawidth: mediawidth,
                         userModel: state.user,
+                        // currentuserModel: state.user,
+                        // currentuserid: state.user.id!,
                       ),
                       CustomTabBar(
                         tabController: tabController,

@@ -37,6 +37,9 @@ class PostRepo {
       debugPrint('response statuscode ${response.statusCode}');
       if (response.statusCode == 201 || response.statusCode == 200) {
         return 'success';
+      }
+      if (response.statusCode == 400) {
+        return 'parameters-missing';
       } else {
         return 'oops';
       }

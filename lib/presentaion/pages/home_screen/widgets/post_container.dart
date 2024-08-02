@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zora/core/navigators/navigators.dart';
+import 'package:zora/core/style/colors/colors.dart';
 import 'package:zora/core/utils/format_time_date.dart';
 import 'package:zora/data/models/post_model/post_model.dart';
 import 'package:zora/data/models/user_model/user_model.dart';
 import 'package:zora/presentaion/bloc/profile_fetch_by_id.dart/profile_fetch_by_id_bloc.dart';
 import 'package:zora/presentaion/bloc/user_profile/user_profile_bloc.dart';
+import 'package:zora/presentaion/pages/home_screen/loading/userby_id_loading.dart';
 import 'package:zora/presentaion/pages/home_screen/sections/like_com_sec.dart';
 import 'package:zora/presentaion/pages/home_screen/sections/pop_up_menu_section.dart';
 import 'package:zora/presentaion/pages/nav_bar/nav_bar.dart';
@@ -50,6 +52,7 @@ class _PostContainerState extends State<PostContainer> {
       height: 350,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
+        color: kgrey,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.2),
@@ -120,7 +123,7 @@ class _PostContainerState extends State<PostContainer> {
                         time: time),
                   );
                 }
-                return Container();
+                return UserbyIdLoading(mediaheight: widget.mediaheight ,mediawidth:widget.mediawidth ,);
               },
             ),
           ),
