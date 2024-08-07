@@ -1,15 +1,9 @@
-import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zora/core/style/colors/colors.dart';
-import 'package:zora/core/utils/debouncer.dart';
 import 'package:zora/data/models/user_model/user_model.dart';
 import 'package:zora/presentaion/Widgets/normal_bond_titles.dart';
-import 'package:zora/presentaion/bloc/profile_fetch_by_id.dart/profile_fetch_by_id_bloc.dart';
-import 'package:zora/presentaion/bloc/user_profile/user_profile_bloc.dart';
-import 'package:zora/presentaion/pages/post_add_page/widgets/post_custom_text_field.dart';
 import 'package:zora/presentaion/pages/profile/widgets/followers_view.dart';
 
 class FollowerList extends StatefulWidget {
@@ -41,7 +35,7 @@ class _FollowerListState extends State<FollowerList> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: NormalBondTitles(
+          title: const NormalBondTitles(
             titles: 'Followers',
           ),
           centerTitle: true,

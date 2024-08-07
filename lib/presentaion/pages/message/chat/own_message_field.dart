@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:zora/core/constants/contants.dart';
 import 'package:zora/core/style/colors/colors.dart';
 import 'package:zora/data/models/chat_model/chat_model.dart';

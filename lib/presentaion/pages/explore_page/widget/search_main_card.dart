@@ -5,7 +5,6 @@ import 'package:zora/data/models/user_model/user_model.dart';
 import 'package:zora/presentaion/Widgets/normal_bond_titles.dart';
 import 'package:zora/presentaion/pages/explore_page/widget/search_follow_button.dart';
 import 'package:zora/presentaion/pages/explore_page/widget/truncatedText.dart';
-import 'package:zora/presentaion/pages/user_profile/widget/follow_button.dart';
 
 class SearchMainCard extends StatelessWidget {
   final UserModel user;

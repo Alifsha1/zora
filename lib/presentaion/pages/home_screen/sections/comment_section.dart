@@ -1,13 +1,11 @@
 import 'dart:developer';
 
-import 'package:expandable_text/expandable_text.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
-import 'package:intl/intl.dart';
 import 'package:zora/core/constants/contants.dart';
 import 'package:zora/core/style/colors/colors.dart';
 import 'package:zora/core/utils/alerts.dart';
@@ -17,8 +15,6 @@ import 'package:zora/data/models/user_model/user_model.dart';
 import 'package:zora/presentaion/Widgets/normal_bond_titles.dart';
 import 'package:zora/presentaion/bloc/comment/comment_bloc.dart';
 import 'package:zora/presentaion/bloc/user_profile/user_profile_bloc.dart';
-import 'package:zora/presentaion/pages/home_screen/widgets/expand_comment_widget.dart';
-import 'package:zora/presentaion/pages/home_screen/widgets/expandable_text_container.dart';
 
 class CommentSecWidget extends StatefulWidget {
   final UserModel user;

@@ -1,17 +1,9 @@
-import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zora/core/constants/contants.dart';
 import 'package:zora/core/style/colors/colors.dart';
-import 'package:zora/data/models/post_model/post_model.dart';
-import 'package:zora/data/models/user_model/user_model.dart';
-import 'package:zora/presentaion/bloc/like_post/like_post_bloc.dart';
-import 'package:zora/presentaion/bloc/user_profile/user_profile_bloc.dart';
 import 'package:zora/presentaion/pages/home_screen/loading/com_loading.dart';
-import 'package:zora/presentaion/pages/home_screen/sections/comment_section.dart';
-import 'package:zora/presentaion/pages/home_screen/widgets/expandable_text_container.dart';
 
 class LikeComLoading extends StatefulWidget {
   const LikeComLoading({

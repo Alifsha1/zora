@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
-import 'package:zora/core/style/colors/colors.dart';
-import 'package:zora/core/style/shimmer_gradient/shimmer_gradient.dart';
 import 'package:zora/presentaion/pages/message/chat/chat_bottom.dart';
 import 'package:zora/presentaion/pages/message/chat/loading/own_cardloading.dart';
 import 'package:zora/presentaion/pages/message/chat/loading/reply_card_loading.dart';

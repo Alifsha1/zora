@@ -2,7 +2,6 @@ import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
-import 'package:zora/core/icons/customiconsflutter_icons.dart';
 import 'package:zora/core/style/colors/colors.dart';
 import 'package:zora/data/service/socket/socket_io.dart';
 

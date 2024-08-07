@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:zora/core/style/colors/colors.dart';
-import 'package:zora/core/style/shimmer_gradient/shimmer_gradient.dart';
 
 class UserbyIdLoading extends StatefulWidget {
   final double mediaheight;

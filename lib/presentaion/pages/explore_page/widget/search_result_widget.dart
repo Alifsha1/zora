@@ -18,7 +18,7 @@ class SearchResultWidget extends StatefulWidget {
 class _SearchResultWidgetState extends State<SearchResultWidget> {
   @override
   Widget build(BuildContext context) {
-    final mediawidth = MediaQuery.of(context).size.width;
+   // final mediawidth = MediaQuery.of(context).size.width;
     final mediaheight = MediaQuery.of(context).size.height;
     return BlocBuilder<GetAllUsersBloc, GetAllUsersState>(
       builder: (context, state) {
@@ -34,7 +34,7 @@ class _SearchResultWidgetState extends State<SearchResultWidget> {
                   context.watch<UserProfileBloc>().state;
                   if (stateA is UserProfileSuccessfulState) {
                     if (state.users[index].id! == stateA.user.id) {
-                      return SizedBox();
+                      return const SizedBox();
                     }else{
                        return Row(
                       children: [

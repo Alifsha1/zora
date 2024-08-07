@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:zora/core/style/colors/colors.dart';
 
+// ignore: must_be_immutable
 class PopUpMenuWidgetButton extends StatefulWidget {
   void Function()? onTap1;
    void Function()? onTap2;

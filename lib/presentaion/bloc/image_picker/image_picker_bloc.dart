@@ -4,7 +4,6 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
-import 'package:flutter/physics.dart';
 import 'package:meta/meta.dart';
 
 part 'image_picker_event.dart';
