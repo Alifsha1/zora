@@ -4,6 +4,7 @@ import 'package:zora/core/style/colors/colors.dart';
 import 'package:zora/data/models/post_model/post_model.dart';
 import 'package:zora/data/models/user_model/user_model.dart';
 import 'package:zora/presentaion/pages/profile/widgets/follower_list.dart';
+import 'package:zora/presentaion/pages/profile/widgets/following.dart';
 
 class AccountInfoPost extends StatelessWidget {
   //   final String currentuserid;
@@ -69,27 +70,34 @@ class AccountInfoPost extends StatelessWidget {
               indent: 1,
             ),
           ),
-          Column(
-            children: [
-              Text(
-                userModel!.following == null || userModel!.following!.isEmpty
-                    ? '0'
-                    : userModel!.following!.length.toString(),
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.normal,
-                  color: kblack,
+          GestureDetector(
+            onTap: () {
+               navigatorPush(FollowingList(userModel: userModel!,
+             // currentuserModel: currentuserModel,currentuserid: currentuserid,
+              ), context);
+            },
+            child: Column(
+              children: [
+                Text(
+                  userModel!.following == null || userModel!.following!.isEmpty
+                      ? '0'
+                      : userModel!.following!.length.toString(),
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.normal,
+                    color: kblack,
+                  ),
                 ),
-              ),
-              Text(
-                'following',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.normal,
-                  color: kgrey,
-                ),
-              )
-            ],
+                Text(
+                  'following',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.normal,
+                    color: kgrey,
+                  ),
+                )
+              ],
+            ),
           ),
           SizedBox(
             height: mediaheight * .08,

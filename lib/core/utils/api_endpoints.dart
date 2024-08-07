@@ -23,4 +23,7 @@ class ApiEndPoints {
   static String unsavepost = '/unsave-post/';
   static String allusers = '/users';
   static String search = '/search';
+  static String getAllchat = '/chat';
+  static String getmychat = '/chat/me';
+  static String getachat = '/chat/me/';
 }

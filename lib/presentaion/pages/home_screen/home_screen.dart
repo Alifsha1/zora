@@ -1,7 +1,10 @@
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:zora/core/navigators/navigators.dart';
+import 'package:zora/data/service/socket/socket_io.dart';
 import 'package:zora/presentaion/Widgets/zora.dart';
 import 'package:zora/presentaion/pages/home_screen/sections/post_section.dart';
+import 'package:zora/presentaion/pages/message/message_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,6 +15,12 @@ class HomeScreen extends StatefulWidget {
 
 // late final controller = SlidableController(this);
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    SocketIo().connectSocket(context);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final mediawidth = MediaQuery.of(context).size.width;
@@ -37,7 +46,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                         navigatorPush(MessageScreenList(), context);
+                        // SocketIo().connectSocket();
+                      },
                       icon: const Icon(
                         FeatherIcons.messageCircle,
                         color: Colors.black,

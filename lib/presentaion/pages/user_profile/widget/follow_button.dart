@@ -3,9 +3,11 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zora/core/constants/contants.dart';
+import 'package:zora/core/navigators/navigators.dart';
 import 'package:zora/core/style/colors/colors.dart';
 import 'package:zora/data/models/user_model/user_model.dart';
 import 'package:zora/presentaion/bloc/folllow_unfollow.dart/follow_unfollow_user_bloc.dart';
+import 'package:zora/presentaion/pages/message/chat/user_chat_page.dart';
 
 class FollowButton extends StatefulWidget {
   final UserModel userModel;
@@ -140,6 +142,7 @@ class _FollowButtonState extends State<FollowButton> {
                 GestureDetector(
                   onTap: () {
                     // Add your message functionality here
+                    navigatorPush(UserChatPage(user: widget.userModel), context);
                   },
                   child: Container(
                     width: widget.mediawidth! / 2.15,
@@ -168,77 +171,72 @@ class _FollowButtonState extends State<FollowButton> {
               ],
             ),
           )
-        :  GestureDetector(
-                  onTap: () {
-                    // Handling follow and unfollow logic
-                    if (isFollowback && isFollowing) {
-                      // Scenario: Following back and unfollowing
-                      context
-                          .read<FollowUnfollowUserBloc>()
-                          .add(UnFollowUserEvent(userid: widget.userModel.id!));
-                      isFollowing = false;
-                    } else if (isFollowback && !isFollowing) {
-                      // Scenario: Follow back and start following
-                      context.read<FollowUnfollowUserBloc>().add(
-                          FollowUserEvent(
-                              userid: widget.userModel.id!,
-                              user: widget.userModel));
-                      isFollowing = true;
-                    } else if (!isFollowback && isFollowing) {
-                      // Scenario: Following but not followed back and unfollowing
-                      context
-                          .read<FollowUnfollowUserBloc>()
-                          .add(UnFollowUserEvent(userid: widget.userModel.id!));
-                      isFollowing = false;
-                    } else {
-                      // Scenario: Not following and decide to follow
-                      context.read<FollowUnfollowUserBloc>().add(
-                          FollowUserEvent(
-                              userid: widget.userModel.id!,
-                              user: widget.userModel));
-                      isFollowing = true;
-                      if (isFollowback) {
-                        // Assume userModel has followingMe flag
-                        isFollowback = true;
-                      }
-                    }
-                    setState(() {});
-                  },
-                  child: Container(
-                  //  width: widget.mediawidth! / 2.15,
-                  width: 80,
-                  height: 30,
-                    decoration: BoxDecoration(
-                      color: (isFollowback && isFollowing) || !isFollowing
-                          ? kblue
-                          : kblue,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(6),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            (isFollowback && isFollowing)
-                                ? 'unfollow'
-                                : isFollowback
-                                    ? 'followback'
-                                    : isFollowing
-                                        ? 'unfollow'
-                                        : 'Follow',
-                            style: TextStyle(
-                              fontWeight: FontWeight.normal,
-                              color:
-                                  (isFollowback && isFollowing) || !isFollowing
-                                      ? kwhite
-                                      : kblack,
-                            ),
-                          ),
-                        ],
+        : GestureDetector(
+            onTap: () {
+              // Handling follow and unfollow logic
+              if (isFollowback && isFollowing) {
+                // Scenario: Following back and unfollowing
+                context
+                    .read<FollowUnfollowUserBloc>()
+                    .add(UnFollowUserEvent(userid: widget.userModel.id!));
+                isFollowing = false;
+              } else if (isFollowback && !isFollowing) {
+                // Scenario: Follow back and start following
+                context.read<FollowUnfollowUserBloc>().add(FollowUserEvent(
+                    userid: widget.userModel.id!, user: widget.userModel));
+                isFollowing = true;
+              } else if (!isFollowback && isFollowing) {
+                // Scenario: Following but not followed back and unfollowing
+                context
+                    .read<FollowUnfollowUserBloc>()
+                    .add(UnFollowUserEvent(userid: widget.userModel.id!));
+                isFollowing = false;
+              } else {
+                // Scenario: Not following and decide to follow
+                context.read<FollowUnfollowUserBloc>().add(FollowUserEvent(
+                    userid: widget.userModel.id!, user: widget.userModel));
+                isFollowing = true;
+                if (isFollowback) {
+                  // Assume userModel has followingMe flag
+                  isFollowback = true;
+                }
+              }
+              setState(() {});
+            },
+            child: Container(
+              //  width: widget.mediawidth! / 2.15,
+              width: 80,
+              height: 30,
+              decoration: BoxDecoration(
+                color: (isFollowback && isFollowing) || !isFollowing
+                    ? kblue
+                    : kblue,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(6),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      (isFollowback && isFollowing)
+                          ? 'unfollow'
+                          : isFollowback
+                              ? 'followback'
+                              : isFollowing
+                                  ? 'unfollow'
+                                  : 'Follow',
+                      style: TextStyle(
+                        fontWeight: FontWeight.normal,
+                        color: (isFollowback && isFollowing) || !isFollowing
+                            ? kwhite
+                            : kblack,
                       ),
                     ),
-                  ),
-                );
+                  ],
+                ),
+              ),
+            ),
+          );
   }
 }

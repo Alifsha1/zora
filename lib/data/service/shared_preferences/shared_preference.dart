@@ -11,6 +11,9 @@ class UserToken {
     final SharedPreferences preferences = await SharedPreferences.getInstance();
     preferences.setString('TOKEN', token);
   }
+}Future<String?> getUsername() async {
+  final sharedPrefs = await SharedPreferences.getInstance();
+  return sharedPrefs.getString('username');
 }
 
 class CurrentUSerId {

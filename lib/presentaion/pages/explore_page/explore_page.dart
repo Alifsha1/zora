@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zora/core/icons/customiconsflutter_icons.dart';
 import 'package:zora/core/style/colors/colors.dart';
 import 'package:zora/core/utils/debouncer.dart';
 import 'package:zora/presentaion/bloc/get_all_users/get_all_users_bloc.dart';
@@ -72,9 +71,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
           ),
           SliverToBoxAdapter(
             child: Padding(
-                padding: EdgeInsets.only(left: 20, right: 20, bottom: 15),
+                padding: const EdgeInsets.only(left: 20, right: 20, bottom: 15),
                 child:
-                    searchbarValue ? SearchResultWidget() : ExploreGridView()),
+                    searchbarValue ? const SearchResultWidget() : const ExploreGridView()),
           ),
         ],
       ),

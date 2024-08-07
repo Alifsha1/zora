@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:zora/core/style/colors/colors.dart';
 import 'package:zora/data/service/shared_preferences/shared_preference.dart';
+import 'package:zora/data/service/socket/socket_io.dart';
 import 'package:zora/presentaion/Widgets/elevated_button.dart';
 import 'package:zora/presentaion/Widgets/normal_bond_titles.dart';
 import 'package:zora/presentaion/pages/user_login/login_page.dart';
@@ -16,7 +17,7 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
-     final mediaheight = MediaQuery.of(context).size.height;
+    final mediaheight = MediaQuery.of(context).size.height;
     final mediawidth = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
@@ -51,6 +52,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                               TextButton(
                                 onPressed: () async {
                                   UserAuthStatus.saveUserStatus(false);
+                                  SocketIo().disconnectSocket();
                                   await Navigator.pushAndRemoveUntil(
                                       context,
                                       MaterialPageRoute(
