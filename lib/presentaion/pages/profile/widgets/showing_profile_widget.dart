@@ -4,7 +4,6 @@ import 'package:zora/core/style/colors/colors.dart';
 import 'package:zora/data/models/user_model/user_model.dart';
 
 class ShowingProfileWidget extends StatelessWidget {
- 
   final UserModel? userModel;
   // final bool onprofile;
   // final bool isCurrentUser;
@@ -12,7 +11,6 @@ class ShowingProfileWidget extends StatelessWidget {
     super.key,
     required this.mediaheight,
     required this.mediawidth,
-   
     required this.userModel,
     //this.onprofile = false,
     //required this.isCurrentUser,
@@ -24,7 +22,7 @@ class ShowingProfileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 370,
+      height: mediaheight * .46,
       child: Stack(
         children: [
           const Positioned(
@@ -55,22 +53,28 @@ class ShowingProfileWidget extends StatelessWidget {
               ),
             ),
           ),
-          Positioned(
-            bottom: mediaheight * .13,
-            right: mediawidth * .3,
-            child: CircleAvatar(
-              radius: 70,
-              backgroundColor: kwhite,
-              child: CircleAvatar(
-                radius: 63,
-                backgroundImage: userModel!.profilePicture == null ||
-                        userModel!.profilePicture!.isEmpty
-                    ? const AssetImage('assets/images/placeholderimage.jpg')
-                    : NetworkImage(userModel!.profilePicture!) as ImageProvider,
+          Positioned.fill(
+            // bottom: mediaheight * .13,
+            // right: mediawidth * .3,
+            child: Align(
+              alignment: Alignment.center,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 40),
+                child: CircleAvatar(
+                  radius: 70,
+                  backgroundColor: kwhite,
+                  child: CircleAvatar(
+                    radius: 63,
+                    backgroundImage: userModel!.profilePicture == null ||
+                            userModel!.profilePicture!.isEmpty
+                        ? const AssetImage('assets/images/placeholderimage.jpg')
+                        : NetworkImage(userModel!.profilePicture!)
+                            as ImageProvider,
+                  ),
+                ),
               ),
             ),
           ),
-          
           Positioned.fill(
             child: Align(
               alignment: Alignment.bottomCenter,
@@ -79,9 +83,7 @@ class ShowingProfileWidget extends StatelessWidget {
                 child: Text(
                   userModel!.fullName!,
                   style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: kblack,
-                      fontSize: 23),
+                      fontWeight: FontWeight.bold, color: kblack, fontSize: 23),
                 ),
               ),
             ),

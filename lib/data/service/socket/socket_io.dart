@@ -28,9 +28,9 @@ class SocketIo {
     socket.off("message");
     socket.on("message", (data) {
       log('socket.on working ');
-      try {} catch (e) {
-        log(e.toString());
-      }
+      // try {} catch (e) {
+      //   log(e.toString());
+      // }
 
       final chat = ChatModel(
           message: data['message'],
@@ -39,7 +39,7 @@ class SocketIo {
           receiver: UserModel(
               username: data['receiver']['username'],
               id: data['receiver']['_id']),
-          sendAt: data['sender']);
+          sendAt: DateTime.parse(data['createdAt']));
       builcontext.read<ChatBloc>().add(AddReceiverChatEvent(chat: chat));
     });
 

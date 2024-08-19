@@ -44,14 +44,15 @@ class CustomSettingButton extends StatelessWidget {
   final double mediawidth;
   final double mediaheight;
   final IconData? prefixicon;
-
+  final Color? color;
   const CustomSettingButton({
     super.key,
     required this.mediawidth,
     required this.mediaheight,
     required this.buttontext,
     this.onPressed,
-    required this.prefixicon,
+    this.prefixicon,
+    this.color,
   });
 
   @override
@@ -70,17 +71,19 @@ class CustomSettingButton extends StatelessWidget {
           children: [
             Row(
               children: [
-                Icon(
-                  prefixicon,
-                  color: kblack,
-                ),
+                prefixicon != null
+                    ? Icon(
+                        prefixicon,
+                        color: kblack,
+                      )
+                    : const SizedBox(),
                 kwidht30,
                 Text(
                   buttontext,
-                  style: const TextStyle(
+                  style: TextStyle(
                       fontFamily: "Quick_sand",
                       fontWeight: FontWeight.w600,
-                      color: kblack),
+                      color: color ?? kblack),
                 ),
               ],
             ),

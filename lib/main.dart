@@ -32,9 +32,11 @@ import 'package:zora/presentaion/bloc/user_profile/user_profile_bloc.dart';
 import 'package:zora/presentaion/cubit/theme/theme_cubit.dart';
 import 'package:zora/presentaion/cubit/toggle_password/toggle_password.dart';
 import 'package:zora/presentaion/pages/splash_screen/splash_screen.dart';
+import 'di.dart' as di;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  di.setupDependencies();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   HydratedBloc.storage = await HydratedStorage.build(
     storageDirectory: kIsWeb
@@ -51,11 +53,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
         providers: [
-          BlocProvider(create: (context) => SignUpBlocBloc()),
-          BlocProvider(create: (context) => UserLoginBloc()),
+          BlocProvider(create: (context) => di.getIt.get<SignUpBlocBloc>()),
+          BlocProvider(create: (context) => di.getIt.get<UserLoginBloc>()),
           BlocProvider(create: (context) => ThemeCubit()),
           BlocProvider(create: (context) => TogglePasswordCubit()),
-          BlocProvider(create: (context) => UserProfileBloc()),
+          BlocProvider(create: (context) => di.getIt.get<UserProfileBloc>()),
           BlocProvider(create: (context) => ForgetPasswordBloc()),
           BlocProvider(create: (context) => EditProfileBloc()),
           BlocProvider(create: (context) => ImagePickerBloc()),
@@ -66,15 +68,15 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context) => GetAllPostBloc()),
           BlocProvider(create: (context) => LikePostBloc()),
           BlocProvider(create: (context) => CommentBloc()),
-          BlocProvider(create: (context) => ProfileFetchByIdBloc()),
-          BlocProvider(create: (context) => FollowUnfollowUserBloc()),
+          BlocProvider(create: (context) => di.getIt.get<ProfileFetchByIdBloc>()),
+          BlocProvider(create: (context) => di.getIt.get<FollowUnfollowUserBloc>()),
           BlocProvider(create: (context) => ProfileBloc()),
           BlocProvider(create: (context) => SaveUnSavePostBloc()),
           BlocProvider(create: (context) => SavedPostsBloc()),
-          BlocProvider(create: (context) => GetAllUsersBloc()),
-          BlocProvider(create: (context)=>ChatBloc()),
-          BlocProvider(create: (context)=>MessageListBloc()),
-          BlocProvider(create: (context)=>AllChatWithMeBloc()),
+          BlocProvider(create: (context) => di.getIt.get<GetAllUsersBloc>()),
+          BlocProvider(create: (context) => ChatBloc()),
+          BlocProvider(create: (context) => MessageListBloc()),
+          BlocProvider(create: (context) => AllChatWithMeBloc()),
         ],
         child: BlocBuilder<ThemeCubit, ThemeMode>(
           builder: (context, ThemeMode mode) {

@@ -6,7 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zora/data/models/user_model/user_model.dart';
 import 'package:zora/presentaion/Widgets/zora.dart';
 import 'package:zora/presentaion/bloc/edit_profile/edit_profile_bloc.dart';
+import 'package:zora/presentaion/bloc/image_picker/image_picker_bloc.dart';
 import 'package:zora/presentaion/pages/edit_profile/widget/edip_profile_widget.dart';
+import 'package:zora/presentaion/pages/edit_profile/widget/functions.dart';
 
 class EditProfileScreen extends StatefulWidget {
   final UserModel user;
@@ -67,6 +69,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             profileImage ?? widget.user.profilePicture,
                         coverPicture: coverImage ?? widget.user.coverPic,
                       ));
+                  log('Profile image in 1st page$profileImage');
+                  log('coming from back end Profile image in 1st page${widget.user.profilePicture}');
                 },
                 child: const Padding(
                   padding: EdgeInsets.all(15.0),
@@ -83,13 +87,26 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: EditProfileWidget(
+            onTapprofilepic: () async {
+              profileImage = await pickProfilePic();
+              // ignore: use_build_context_synchronously
+              BlocProvider.of<ImagePickerBloc>(context)
+                  .add(AddProfilePicEvent(image: profileImage!));
+              log('profile image ${profileImage!}');
+            },
+            onTappcoverpic: () async {
+              coverImage = await pickCoverPic();
+              // ignore: use_build_context_synchronously
+              BlocProvider.of<ImagePickerBloc>(context)
+                  .add(AddCoverPicEvent(image: coverImage!));
+              log('coverimage  ${coverImage!}');
+            },
             user: widget.user,
             mediaheight: mediaheight,
             mediawidth: mediawidth,
             fullnameController: fullnameController,
             usernameController: usernameController,
             bioController: bioController,
-  
             coverimage: coverImage,
             coverpicImageUrl: coverpicImageUrl,
             profileImageUrl: profileImageUrl,

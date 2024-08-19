@@ -4,7 +4,7 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
-import 'package:zora/domain/repository/post_repo/post_repo.dart';
+import 'package:zora/data/repository/post_repo_impl/post_repo.dart';
 
 part 'like_post_event.dart';
 part 'like_post_state.dart';

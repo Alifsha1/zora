@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zora/presentaion/bloc/save_Unsave_post/save_un_save_post_bloc.dart';
 import 'package:zora/presentaion/bloc/saved_posts/saved_posts_bloc.dart';
+import 'package:zora/presentaion/pages/user_saved_postimage/widgets/pop_up_home.dart';
 import 'package:zora/presentaion/pages/user_saved_postimage/widgets/pop_up_menu_widget.dart';
 
 class PopUpMenuSection extends StatefulWidget {
@@ -31,7 +32,7 @@ class _PopUpMenuSectionState extends State<PopUpMenuSection> {
                 log('Saved post succes state inside bloc builder');
                 if (stateA.savedpostids.contains(widget.postid)) {
                   log('saved fetcing ${stateA.savedpostids} ${widget.postid}');
-                  return PopUpMenuWidgetButton(
+                  return PopUpHomeWidget(
                     onTap1: () {
                       context
                           .read<SaveUnSavePostBloc>()
@@ -40,10 +41,10 @@ class _PopUpMenuSectionState extends State<PopUpMenuSection> {
                       setState(() {});
                     },
                     buttontxt: 'Unsave',
-                    txt2: 'Report',
+                    //txt2: 'Report',
                   );
                 }
-                return PopUpMenuWidgetButton(
+                return PopUpHomeWidget(
                   onTap1: () {
                     context
                         .read<SaveUnSavePostBloc>()
@@ -52,7 +53,7 @@ class _PopUpMenuSectionState extends State<PopUpMenuSection> {
                     setState(() {});
                   },
                   buttontxt: 'Save',
-                  txt2: 'Report',
+                  //txt2: 'Report',
                 );
               }
               return BlocListener<SaveUnSavePostBloc, SaveUnSavePostState>(
@@ -62,14 +63,14 @@ class _PopUpMenuSectionState extends State<PopUpMenuSection> {
                     context.read<SavedPostsBloc>().add(GetSavedPostEvent());
                   }
                 },
-                child: PopUpMenuWidgetButton(
+                child: PopUpHomeWidget(
                   onTap1: () {
                     context
                         .read<SaveUnSavePostBloc>()
                         .add(SavePostEvent(postid: widget.postid!));
                   },
                   buttontxt: 'Save',
-                  txt2: 'Report',
+                  //txt2: 'Report',
                 ),
               );
             },

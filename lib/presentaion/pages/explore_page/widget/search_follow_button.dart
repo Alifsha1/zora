@@ -36,10 +36,10 @@ class _FollowButtonOnSearchResultState
     //log('init working or not${widget.userModel.following}');
     log('Current User Id: ${widget.currentuserid}');
     for (int i = 0; i < widget.userModel.following!.length; i++) {
-      log('Following: ${widget.userModel.following![i]['_id']}');
-      if (widget.userModel.following![i]['_id'].toString() ==
+     // log('Following: ${widget.userModel.following![i]['_id']}');
+      if (widget.userModel.following![i].toString() ==
           widget.currentuserid) {
-        userid = widget.userModel.following![i]['_id'].toString();
+        userid = widget.userModel.following![i].toString();
         log('message');
         isFollowback = true;
         setState(() {});

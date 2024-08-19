@@ -1,6 +1,8 @@
 class ApiEndPoints {
   //static String baseUrl = 'https://kn22qqqf-5000.inc1.devtunnels.ms';
-  static String baseUrl = 'http://10.0.2.2:5000';
+  // static String baseUrl = 'http://10.0.2.2:5000';
+  //static String baseUrl = 'https://6k8jwwzh-5000.inc1.devtunnels.ms';
+  static String baseUrl = 'https://connect-backend-ti8g.onrender.com';
   static String userSignUp = '/signup';
   static String userVerifyOyp = '/signup-send-otp';
   static String userlogin = '/login';

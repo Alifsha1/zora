@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:wechat_assets_picker/wechat_assets_picker.dart';
-import 'package:zora/domain/repository/image_picker/photo_picker.dart';
+import 'package:zora/data/repository/image_picker_impl/photo_picker.dart';
 
 class MediaPicker extends StatefulWidget {
   final int maxCount;

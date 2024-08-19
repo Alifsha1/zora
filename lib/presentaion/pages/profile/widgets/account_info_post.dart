@@ -32,7 +32,7 @@ class AccountInfoPost extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
-              navigatorPush(FollowerList(userModel: userModel!,
+              navigatorPush(FollowerList(userModel: userModel!,userid: userModel!.id!,
              // currentuserModel: currentuserModel,currentuserid: currentuserid,
               ), context);
             },

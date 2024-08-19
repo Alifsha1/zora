@@ -5,7 +5,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
-import 'package:zora/domain/repository/forget_repo/forget_repo.dart';
+import 'package:zora/data/repository/forget_repo_impl/forget_repo.dart';
 
 part 'forget_password_event.dart';
 part 'forget_password_state.dart';

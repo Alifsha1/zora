@@ -14,12 +14,13 @@ class UserListTile extends StatefulWidget {
     required this.username,
     this.buttonText,
     this.userModel,
-    this.id,
+    this.id,  this.userid,
     // required this.currentuserModel,
     // required this.currentuserid
   });
 
   final void Function()? onTap;
+   final String? userid;
   final String profileUrl;
   final String fullname;
   final String username;
@@ -77,6 +78,7 @@ class _UserListTileState extends State<UserListTile> {
               if (state is ProfileFetchByIdSuccessState) {
                 return FollowButton(
                   userModel: state.user,
+                  userid: widget.id,
                   currentuserid: widget.userModel!.id!,
                   currentusermodel: widget.userModel!,
                   message: false,

@@ -5,7 +5,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:photo_manager/photo_manager.dart';
-import 'package:zora/domain/repository/post_repo/post_repo.dart';
+import 'package:zora/data/repository/post_repo_impl/post_repo.dart';
 
 part 'create_post_event.dart';
 part 'create_post_state.dart';

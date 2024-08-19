@@ -1,10 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:zora/core/navigators/navigators.dart';
 import 'package:zora/core/style/colors/colors.dart';
 import 'package:zora/data/service/shared_preferences/shared_preference.dart';
 import 'package:zora/data/service/socket/socket_io.dart';
 import 'package:zora/presentaion/Widgets/elevated_button.dart';
 import 'package:zora/presentaion/Widgets/normal_bond_titles.dart';
+import 'package:zora/presentaion/pages/settings/sub_pages/about_us.dart';
+import 'package:zora/presentaion/pages/settings/sub_pages/help.dart';
+import 'package:zora/presentaion/pages/settings/sub_pages/privacy_policy.dart';
+import 'package:zora/presentaion/pages/settings/widgets/socials_icons.dart';
 import 'package:zora/presentaion/pages/user_login/login_page.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -29,6 +34,33 @@ class _SettingsScreenState extends State<SettingsScreen> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
+              CustomSettingButton(
+                mediaheight: mediawidth,
+                onPressed: () {
+                  navigatorPush(AboutUsPage(), context);
+                },
+                mediawidth: mediawidth,
+                buttontext: 'About Us',
+                prefixicon: CupertinoIcons.info,
+              ),
+              CustomSettingButton(
+                mediaheight: mediawidth,
+                onPressed: () {
+                  navigatorPush(PrivacyAndPolicy(), context);
+                },
+                mediawidth: mediawidth,
+                buttontext: 'Privacy & policy',
+                prefixicon: CupertinoIcons.doc,
+              ),
+              CustomSettingButton(
+                mediaheight: mediawidth,
+                onPressed: () {
+                    navigatorPush(HelpScreen(), context);
+                },
+                mediawidth: mediawidth,
+                buttontext: 'Help',
+                prefixicon: CupertinoIcons.question_circle,
+              ),
               CustomSettingButton(
                 mediaheight: mediaheight,
                 mediawidth: mediawidth,
@@ -66,27 +98,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           ));
                 },
               ),
-              CustomSettingButton(
-                mediaheight: mediawidth,
-                onPressed: () {},
-                mediawidth: mediawidth,
-                buttontext: 'About Us',
-                prefixicon: CupertinoIcons.info,
+              Spacer(),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 80),
+                child: SocialsIcons(),
               ),
-              CustomSettingButton(
-                mediaheight: mediawidth,
-                onPressed: () {},
-                mediawidth: mediawidth,
-                buttontext: 'Privacy & policy',
-                prefixicon: CupertinoIcons.doc,
-              ),
-              CustomSettingButton(
-                mediaheight: mediawidth,
-                onPressed: () {},
-                mediawidth: mediawidth,
-                buttontext: 'Help',
-                prefixicon: CupertinoIcons.question_circle,
-              )
             ],
           ),
         ),

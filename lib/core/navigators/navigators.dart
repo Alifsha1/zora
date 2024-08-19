@@ -15,6 +15,16 @@ navigatorPush(page, context) {
       duration: const Duration(milliseconds: 1000)));
 }
 
+Future<dynamic> nextScreen(context, page) {
+  return Navigator.push(
+    context,
+    PageTransition(
+      child: page,
+      type: PageTransitionType.fade,
+    ),
+  );
+}
+
 navigatorPushReplacement(page, context) {
   Navigator.of(context).pushAndRemoveUntil(
       MaterialPageRoute(builder: (ctx) => page), (route) => false);

@@ -15,7 +15,10 @@ class UserToken {
   final sharedPrefs = await SharedPreferences.getInstance();
   return sharedPrefs.getString('username');
 }
-
+saveUsername(String username) async {
+  final sharedPrefs = await SharedPreferences.getInstance();
+  await sharedPrefs.setString('username',username);
+}
 class CurrentUSerId {
   static Future<String> getUserId() async {
     final SharedPreferences preferences = await SharedPreferences.getInstance();

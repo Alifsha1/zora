@@ -3,7 +3,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:zora/domain/repository/chat_repo/chat_repo.dart';
+import 'package:zora/data/repository/chat_repo_impl/chat_repo.dart';
 
 part 'all_chat_with_me_event.dart';
 part 'all_chat_with_me_state.dart';

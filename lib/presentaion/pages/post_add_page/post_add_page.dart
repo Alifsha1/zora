@@ -7,7 +7,7 @@ import 'package:wechat_assets_picker/wechat_assets_picker.dart';
 import 'package:zora/core/constants/contants.dart';
 import 'package:zora/core/navigators/navigators.dart';
 import 'package:zora/core/utils/alerts.dart';
-import 'package:zora/domain/repository/image_picker/photo_picker.dart';
+import 'package:zora/data/repository/image_picker_impl/photo_picker.dart';
 import 'package:zora/presentaion/Widgets/normal_bond_titles.dart';
 import 'package:zora/presentaion/Widgets/zora.dart';
 import 'package:zora/presentaion/bloc/create_post/create_post_bloc.dart';

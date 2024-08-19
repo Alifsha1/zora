@@ -11,6 +11,7 @@ import 'package:zora/presentaion/pages/message/chat/user_chat_page.dart';
 
 class FollowButton extends StatefulWidget {
   final UserModel userModel;
+   final String? userid;
   final UserModel currentusermodel;
   final String currentuserid;
   final double? mediawidth;
@@ -21,7 +22,7 @@ class FollowButton extends StatefulWidget {
       required this.userModel,
       required this.currentuserid,
       required this.currentusermodel,
-      required this.message});
+      required this.message,  this.userid});
 
   @override
   State<FollowButton> createState() => _FollowButtonState();
@@ -36,22 +37,23 @@ class _FollowButtonState extends State<FollowButton> {
   void initState() {
     //log('init working or not${widget.userModel.following}');
     log('Current User Id: ${widget.currentuserid}');
+    log(' User Id: ${widget.userid}');
     for (int i = 0; i < widget.userModel.following!.length; i++) {
-      log('Following: ${widget.userModel.following![i]['_id']}');
+      log('Following user: ${widget.userModel.following![i]['_id']} ${widget.userModel.following![i]['fullname']}  ${widget.currentuserid} ${widget.currentusermodel.fullName}');
       if (widget.userModel.following![i]['_id'].toString() ==
-          widget.currentuserid) {
+          widget.currentusermodel.id) {
         userid = widget.userModel.following![i]['_id'].toString();
-        log('message');
+        log('Inside if condition loop 1');
         isFollowback = true;
         setState(() {});
       }
     }
     for (int i = 0; i < widget.currentusermodel.following!.length; i++) {
-      log('Following: ${widget.currentusermodel.following![i]['_id']}');
+      log('Following current user: ${widget.currentusermodel.following![i]['_id']} ${widget.currentusermodel.following![i]['fullname']}  ${widget.userid} ${widget.userModel.fullName}');
       if (widget.currentusermodel.following![i]['_id'].toString() ==
-          widget.userModel.id) {
+          widget.userid) {
         userid = widget.currentusermodel.following![i]['_id'].toString();
-        log('message');
+        log('Inside if condition loop 2');
         isFollowing = true;
         setState(() {});
       }
@@ -61,7 +63,7 @@ class _FollowButtonState extends State<FollowButton> {
 
   @override
   Widget build(BuildContext context) {
-    log('Is Follow Back: $isFollowback');
+    log('Is Follow Back: $isFollowback $isFollowing');
 
     return widget.message
         ? Padding(
@@ -142,7 +144,8 @@ class _FollowButtonState extends State<FollowButton> {
                 GestureDetector(
                   onTap: () {
                     // Add your message functionality here
-                    navigatorPush(UserChatPage(user: widget.userModel), context);
+                    navigatorPush(
+                        UserChatPage(user: widget.userModel), context);
                   },
                   child: Container(
                     width: widget.mediawidth! / 2.15,

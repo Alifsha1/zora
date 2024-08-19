@@ -4,7 +4,7 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:zora/data/models/user_model/user_model.dart';
-import 'package:zora/domain/repository/chat_repo/chat_repo.dart';
+import 'package:zora/data/repository/chat_repo_impl/chat_repo.dart';
 
 part 'message_list_event.dart';
 part 'message_list_state.dart';

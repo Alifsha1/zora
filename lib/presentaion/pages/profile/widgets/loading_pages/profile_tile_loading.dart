@@ -45,17 +45,23 @@ class ShowingProfileTileLoading extends StatelessWidget {
               ),
             ),
           ),
-          Positioned(
+          Positioned.fill(
             bottom: mediaheight * .16,
             right: mediawidth * .27,
             child: Shimmer(
               gradient: shimmerGradient,
-              child: CircleAvatar(
-                radius: 70,
-                backgroundColor: Colors.white,
-                child: CircleAvatar(
-                  radius: 63,
-                  backgroundColor: kgreyshimmer,
+              child: Align(
+                alignment: Alignment.center,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 40),
+                  child: CircleAvatar(
+                    radius: 70,
+                    backgroundColor: Colors.white,
+                    child: CircleAvatar(
+                      radius: 63,
+                      backgroundColor: kgreyshimmer,
+                    ),
+                  ),
                 ),
               ),
             ),

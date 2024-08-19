@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,7 +12,7 @@ import 'package:zora/presentaion/pages/edit_profile/widget/functions.dart';
 import 'package:zora/presentaion/pages/nav_bar/nav_bar.dart';
 
 class EditProfileWidget extends StatefulWidget {
-  EditProfileWidget({
+   EditProfileWidget({
     super.key,
     required this.mediaheight,
     required this.mediawidth,
@@ -19,11 +20,12 @@ class EditProfileWidget extends StatefulWidget {
     required this.usernameController,
     required this.bioController,
     required this.user,
-    this.onTapprofilepic,
+    required this.onTapprofilepic,
     required this.profileimage,
     required this.coverimage,
     required this.profileImageUrl,
     required this.coverpicImageUrl,
+    required this.onTappcoverpic,
   });
   final UserModel user;
   final double mediaheight;
@@ -36,7 +38,9 @@ class EditProfileWidget extends StatefulWidget {
   File? coverimage;
   String profileImageUrl;
   String coverpicImageUrl;
-  final void Function()? onTapprofilepic;
+  final void Function() onTapprofilepic;
+  final void Function() onTappcoverpic;
+
 
   @override
   State<EditProfileWidget> createState() => _EditProfileWidgetState();
@@ -98,7 +102,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                           ? const AssetImage(
                                               'assets/images/placeholdercover.jpg')
                                           : Image.file(widget.coverimage!).image
-                                      : NetworkImage(widget.coverpicImageUrl),
+                                      : NetworkImage(widget.coverpicImageUrl)
+                                          as ImageProvider,
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -117,7 +122,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                         ? const AssetImage(
                                             'assets/images/placeholderimage.jpg')
                                         : Image.file(widget.profileimage!).image
-                                    : NetworkImage(widget.profileImageUrl),
+                                    : NetworkImage(widget.profileImageUrl)
+                                        as ImageProvider,
                               ),
                             ),
                           ),
@@ -128,13 +134,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               radius: 15,
                               backgroundColor: Colors.white,
                               child: GestureDetector(
-                                onTap: () async {
-                                  widget.profileimage = await pickProfilePic();
-                                  // ignore: use_build_context_synchronously
-                                  BlocProvider.of<ImagePickerBloc>(context).add(
-                                      AddProfilePicEvent(
-                                          image: widget.profileimage!));
-                                },
+                                onTap: widget.onTapprofilepic,
                                 child: const Icon(
                                   Customiconsflutter.editfill,
                                   color: Colors.black,
@@ -149,13 +149,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               radius: 13,
                               backgroundColor: Colors.white,
                               child: GestureDetector(
-                                onTap: () async {
-                                  widget.coverimage = await pickCoverPic();
-                                  // ignore: use_build_context_synchronously
-                                  BlocProvider.of<ImagePickerBloc>(context).add(
-                                      AddCoverPicEvent(
-                                          image: widget.coverimage!));
-                                },
+                                onTap: widget.onTappcoverpic,
                                 child: const Icon(
                                   Customiconsflutter.editfill,
                                   color: Colors.black,

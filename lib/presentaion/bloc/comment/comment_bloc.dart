@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:zora/data/models/post_model/post_model.dart';
 import 'package:zora/data/models/user_model/user_model.dart';
-import 'package:zora/domain/repository/post_repo/post_repo.dart';
+import 'package:zora/data/repository/post_repo_impl/post_repo.dart';
 
 part 'comment_event.dart';
 part 'comment_state.dart';

@@ -7,10 +7,10 @@ class PopUpMenuWidgetButton extends StatefulWidget {
   void Function()? onTap1;
    void Function()? onTap2;
   final String buttontxt;
-  final String txt2;
+  final String? txt2;
   PopUpMenuWidgetButton({
     super.key,
-    required this.onTap1,required this.buttontxt,required this.txt2,
+    required this.onTap1,required this.buttontxt, this.txt2,
     this.onTap2,
   });
 
@@ -42,14 +42,15 @@ class _PopUpMenuWidgetButtonState extends State<PopUpMenuWidgetButton> {
                       style: TextStyle(color: kwhite),
                     ),
                   ),
-                  // PopupMenuItem(
-                  //   onTap: widget.onTap2,
-                  //   value: widget.txt2,
-                  //   child:  Text(
-                  //     widget.txt2,
-                  //     style: TextStyle(color: kwhite),
-                  //   ),
-                  // ),
+                  
+                  PopupMenuItem(
+                    onTap: widget.onTap2,
+                    value: widget.txt2,
+                    child:  Text(
+                      widget.txt2?? '',
+                      style: TextStyle(color: kwhite),
+                    ),
+                  ),
                 ];
               });
         }));

@@ -176,13 +176,17 @@ class _LikeComSecWidgetState extends State<LikeComSecWidget> {
                   ],
                 );
               }
-              return LikeComLoading();
+              return const LikeComLoading();
             },
           ),
           Padding(
-            padding: const EdgeInsets.only(bottom: 10),
-            child:
-                ExpandableTextContainer(description: widget.post.description!,boxcolor: Colors.black.withOpacity(0.5),width: MediaQuery.of(context).size.width,textcolor: kwhite,),
+            padding: const EdgeInsets.only(bottom: 1),
+            child: ExpandableTextContainer(
+              description: widget.post.description!,
+              boxcolor: Colors.black.withOpacity(0.5),
+              width: MediaQuery.of(context).size.width,
+              textcolor: kwhite,
+            ),
           ),
         ],
       ),

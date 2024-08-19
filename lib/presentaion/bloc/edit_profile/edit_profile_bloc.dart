@@ -4,7 +4,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:zora/domain/repository/profile_repo/profile_repo.dart';
+import 'package:zora/data/repository/profile_repo_impl/profile_repo.dart';
 
 part 'edit_profile_event.dart';
 part 'edit_profile_state.dart';

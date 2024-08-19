@@ -5,13 +5,16 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:zora/data/models/user_model/user_model.dart';
-import 'package:zora/domain/repository/auth_repo/auth_repo.dart';
+import 'package:zora/data/repository/auth_repo_impl/auth_repo.dart';
+import 'package:zora/domain/usecase/auth_usecase/auth_usecase.dart';
 
 part 'sign_up_bloc_event.dart';
 part 'sign_up_bloc_state.dart';
 
 class SignUpBlocBloc extends Bloc<SignUpBlocEvent, SignUpBlocState> {
-  SignUpBlocBloc() : super(SignUpBlocInitial()) {
+  final AuthUsecase authUsecase;
+
+  SignUpBlocBloc({required this.authUsecase}) : super(SignUpBlocInitial()) {
     on<UserOtpVerificationEvent>(userOtpVerificationEvent);
     on<UserSignedEvent>(userSignUpEvent);
   }
@@ -19,7 +22,7 @@ class SignUpBlocBloc extends Bloc<SignUpBlocEvent, SignUpBlocState> {
   Future<void> userSignUpEvent(
       UserSignedEvent event, Emitter<SignUpBlocState> emit) async {
     emit(UserSignUpLoadingState());
-    SignUpResult response = await Authrepo.userSignUp(user: event.user);
+    SignUpResult response = await authUsecase.userSignUp(user: event.user);
     if (response.status == 'success') {
       emit(UserSignUpSuccessState());
     } else if (response.status == 'invalid-otp') {
@@ -33,11 +36,10 @@ class SignUpBlocBloc extends Bloc<SignUpBlocEvent, SignUpBlocState> {
     }
   }
 
- 
   FutureOr<void> userOtpVerificationEvent(
       UserOtpVerificationEvent event, Emitter<SignUpBlocState> emit) async {
     emit(UserOtpLoadingState());
-    String response = await Authrepo.userVerifyOtp(email: event.email);
+    String response = await authUsecase.userVerifyOtp(email: event.email);
     if (response == 'success') {
       emit(USerOtpSucceccState());
     } else if (response == 'already-exists') {
@@ -46,5 +48,4 @@ class SignUpBlocBloc extends Bloc<SignUpBlocEvent, SignUpBlocState> {
       emit(USerOtpErrorState());
     }
   }
-
 }

@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:zora/data/models/user_model/user_model.dart';
-import 'package:zora/domain/repository/profile_repo/profile_repo.dart';
+import 'package:zora/data/repository/profile_repo_impl/profile_repo.dart';
 
 part 'profile_event.dart';
 part 'profile_state.dart';

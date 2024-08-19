@@ -4,7 +4,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:zora/domain/repository/post_repo/post_repo.dart';
+import 'package:zora/data/repository/post_repo_impl/post_repo.dart';
 
 part 'delete_post_event.dart';
 part 'delete_post_state.dart';

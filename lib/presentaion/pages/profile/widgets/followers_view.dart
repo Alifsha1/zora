@@ -10,11 +10,14 @@ import 'package:zora/presentaion/pages/user_profile/user_profile.dart';
 
 class FollowersViewList extends StatefulWidget {
   final UserModel userModel;
+   final String userid;
   //   final String currentuserid;
   // final UserModel currentuserModel;
-  const FollowersViewList({super.key, required this.userModel,
-  //  required this.currentuserid, required this.currentuserModel
-   });
+  const FollowersViewList({
+    super.key,
+    required this.userModel, required this.userid,
+    //  required this.currentuserid, required this.currentuserModel
+  });
 
   @override
   State<FollowersViewList> createState() => _FollowersViewListState();
@@ -30,26 +33,25 @@ class _FollowersViewListState extends State<FollowersViewList> {
             controller: scrollController,
             itemBuilder: (context, index) {
               final follower = widget.userModel.followers![index];
-              log('followers list id :${follower['_id']}'); 
+              log('followers list id :${follower['_id']}');
               log('followers fullname id :${follower['fullname']}');
               log('followers username id :${follower['username']}');
               return UserListTile(
                 // currentuserModel: widget.currentuserModel,
                 // currentuserid: widget.currentuserid,
+                userid: widget.userid,
                 userModel: widget.userModel,
                 id: follower['_id'],
-                  onTap: () {
-                    context
-                        .read<ProfileFetchByIdBloc>()
-                        .add(ProfileFetchingByIdEvent(userid: follower['_id']));
-                    navigatorPush(const UserProfileScreen(), context);
-                  },
-                  profileUrl: follower['profile_picture'].toString(),
-                  fullname: follower['fullname'].toString(),
-                  username: follower['username'].toString(),
-                  
-                  );
-             
+                onTap: () {
+                  context
+                      .read<ProfileFetchByIdBloc>()
+                      .add(ProfileFetchingByIdEvent(userid: follower['_id']));
+                  navigatorPush(const UserProfileScreen(), context);
+                },
+                profileUrl: follower['profile_picture'].toString(),
+                fullname: follower['fullname'].toString(),
+                username: follower['username'].toString(),
+              );
             },
           )
         : const Center(

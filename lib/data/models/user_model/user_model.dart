@@ -1,6 +1,7 @@
 import 'package:zora/data/models/post_model/post_model.dart';
+import 'package:zora/data/models/user_model/user_entity.dart';
 
-class UserModel {
+class UserModel  {
   final String? id;
   final String? username;
   final String? password;

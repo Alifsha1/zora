@@ -1,3 +1,4 @@
+import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -13,6 +14,8 @@ import 'package:zora/presentaion/pages/home_screen/loading/userby_id_loading.dar
 import 'package:zora/presentaion/pages/home_screen/sections/like_com_sec.dart';
 import 'package:zora/presentaion/pages/home_screen/sections/pop_up_menu_section.dart';
 import 'package:zora/presentaion/pages/nav_bar/nav_bar.dart';
+import 'package:zora/presentaion/pages/profile/widgets/image_preview.dart';
+import 'package:zora/presentaion/pages/user_post_images_showing/widget/pop_up_menu_profile.dart';
 import 'package:zora/presentaion/pages/user_profile/user_profile.dart';
 import 'package:zora/presentaion/pages/user_saved_postimage/widgets/user_by_id.dart';
 
@@ -49,8 +52,8 @@ class _PostContainerState extends State<PostContainer> {
     final time = formatTimeAgo(widget.post.createdAt!);
 
     return Container(
+      margin: const EdgeInsets.only(bottom: 20),
       height: 350,
-      width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         color: kgrey,
         boxShadow: [
@@ -61,38 +64,59 @@ class _PostContainerState extends State<PostContainer> {
             offset: const Offset(5, 5),
           ),
         ],
-        image: DecorationImage(
-          image: NetworkImage(widget.post.mediaURL![0]),
-          fit: BoxFit.cover,
-        ),
         borderRadius: BorderRadius.circular(40),
       ),
       child: Stack(
         children: [
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: Container(
-              height: 120,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Colors.transparent,
-                    Colors.black.withOpacity(0.5),
-                  ],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  stops: const [-0.0, 0.70],
+          widget.post.mediaURL!.length > 1
+              ? GestureDetector(
+                  onTap: () {
+                    navigatorPush(
+                        ImagePreviewScreen(
+                          images: widget.post.mediaURL!,
+                        ),
+                        context);
+                  },
+                  child: ConstrainedBox(
+                    constraints:
+                        BoxConstraints.loose(Size(widget.mediawidth, 350)),
+                    child: Swiper(
+                      itemBuilder: (context, pageIndex) {
+                        return Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(40),
+                            image: DecorationImage(
+                              image: NetworkImage(
+                                  widget.post.mediaURL![pageIndex]),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        );
+                      },
+                      itemCount: widget.post.mediaURL!.length,
+                      pagination: const SwiperPagination(
+                        margin: EdgeInsets.all(5.0),
+                      ),
+                    ),
+                  ),
+                )
+              : GestureDetector(
+                  onTap: () {
+                    navigatorPush(
+                        ImagePreviewScreen(images: widget.post.mediaURL!),
+                        context);
+                  },
+                  child: Container(
+                    height: 350,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(40),
+                      image: DecorationImage(
+                        image: NetworkImage(widget.post.mediaURL![0]),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
                 ),
-                color: Colors.white,
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(40),
-                  bottomRight: Radius.circular(40),
-                ),
-              ),
-            ),
-          ),
           Positioned(
             top: 20,
             left: 20,
@@ -123,7 +147,10 @@ class _PostContainerState extends State<PostContainer> {
                         time: time),
                   );
                 }
-                return UserbyIdLoading(mediaheight: widget.mediaheight ,mediawidth:widget.mediawidth ,);
+                return UserbyIdLoading(
+                  mediaheight: widget.mediaheight,
+                  mediawidth: widget.mediawidth,
+                );
               },
             ),
           ),
@@ -137,7 +164,7 @@ class _PostContainerState extends State<PostContainer> {
             left: 0,
             right: 0,
             child: LikeComSecWidget(user: widget.user, post: widget.post),
-          ),
+          )
         ],
       ),
     );

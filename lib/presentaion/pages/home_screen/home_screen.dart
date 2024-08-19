@@ -38,16 +38,16 @@ class _HomeScreenState extends State<HomeScreen> {
             actions: [
               Row(
                 children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      FeatherIcons.bell,
-                      color: Colors.black,
-                    ),
-                  ),
+                  // IconButton(
+                  //   onPressed: () {},
+                  //   icon: const Icon(
+                  //     FeatherIcons.bell,
+                  //     color: Colors.black,
+                  //   ),
+                  // ),
                   IconButton(
                       onPressed: () {
-                         navigatorPush(MessageScreenList(), context);
+                        navigatorPush(const MessageScreenList(), context);
                         // SocketIo().connectSocket();
                       },
                       icon: const Icon(

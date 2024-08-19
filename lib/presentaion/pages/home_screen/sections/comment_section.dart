@@ -71,7 +71,7 @@ class _CommentSecWidgetState extends State<CommentSecWidget>
         ),
       ),
       builder: (BuildContext context) {
-      //  final cmtboxwidth = MediaQuery.of(context).size.width;
+        //  final cmtboxwidth = MediaQuery.of(context).size.width;
         final bottompadding = MediaQuery.of(context).viewInsets.bottom;
         return BlocBuilder<UserProfileBloc, UserProfileState>(
           builder: (context, stateA) {
@@ -217,10 +217,10 @@ class _CommentSecWidgetState extends State<CommentSecWidget>
                                                       ],
                                                     ),
                                                     SizedBox(
-                                                        width: mediawidth * 0.75,
+                                                        width:
+                                                            mediawidth * 0.75,
                                                         child: Text(
                                                             comment.comments)),
-                                                    
                                                   ],
                                                 )
                                               ],

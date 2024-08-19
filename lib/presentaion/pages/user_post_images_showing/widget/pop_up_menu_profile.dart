@@ -18,13 +18,13 @@ class PopUpMenuProfileButtonWidget extends StatefulWidget {
   final UserModel? userModel;
   final int index;
   // final ScrollController scrollController;
-  const PopUpMenuProfileButtonWidget(
-      {super.key,
-      required this.postid,
-      required this.userModel,
-      required this.index,
-      // required this.scrollController,
-       });
+  const PopUpMenuProfileButtonWidget({
+    super.key,
+    required this.postid,
+    required this.userModel,
+    required this.index,
+    // required this.scrollController,
+  });
 
   @override
   State<PopUpMenuProfileButtonWidget> createState() =>
@@ -33,17 +33,17 @@ class PopUpMenuProfileButtonWidget extends StatefulWidget {
 
 class _PopUpMenuProfileButtonWidgetState
     extends State<PopUpMenuProfileButtonWidget> {
-      final ScrollController scrollController = ScrollController();
-  
+  final ScrollController scrollController = ScrollController();
+
   @override
   void initState() {
-    // context.read<DeletePostBloc>();
+    //context.read<DeletePostBloc>();
     posts = widget.userModel!.posts ?? [];
     log('${widget.index}');
     SchedulerBinding.instance.addPostFrameCallback(
       (_) {
         if (scrollController.hasClients) {
-        scrollController.position.jumpTo(widget.index * 350);
+          scrollController.position.jumpTo(widget.index * 350);
         }
       },
     );
@@ -100,7 +100,7 @@ class _PopUpMenuProfileButtonWidgetState
                                       deletePost(widget.postid!);
                                       context.read<UserProfileBloc>().add(
                                           UserProfileInitialDetailsFetchEvent());
-                                           Navigator.of(context).pop();
+                                      Navigator.of(context).pop();
                                     },
                                     child: const Text(
                                       'delete',
@@ -145,7 +145,7 @@ class _PopUpMenuProfileButtonWidgetState
                                     deletePost(widget.postid!);
                                     context.read<UserProfileBloc>().add(
                                         UserProfileInitialDetailsFetchEvent());
-                                         Navigator.of(context).pop();
+                                    Navigator.of(context).pop();
                                   },
                                   child: const Text(
                                     'delete',
@@ -174,36 +174,38 @@ class _PopUpMenuProfileButtonWidgetState
                   txt2: 'Delete',
                   onTap2: () {
                     showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                              //  backgroundColor: Colors.transparent.withOpacity(0.5),
-                              title: const Text('Delete post'),
-                              content: const Text(
-                                  "Are you sure you want \nto delete?"),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                  child: const Text('cancel'),
-                                ),
-                                TextButton(
-                                  onPressed: () async {
-                                    context.read<DeletePostBloc>().add(
-                                        DeletePostfromProfileEvent(
-                                            postid: widget.postid!));
-                                    deletePost(widget.postid!);
-                                    context.read<UserProfileBloc>().add(
-                                        UserProfileInitialDetailsFetchEvent());
-                                         Navigator.of(context).pop();
-                                  },
-                                  child: const Text(
-                                    'delete',
-                                    style: TextStyle(color: kred),
-                                  ),
-                                ),
-                              ],
-                            ));
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        //  backgroundColor: Colors.transparent.withOpacity(0.5),
+                        title: const Text('Delete post'),
+                        content:
+                            const Text("Are you sure you want \nto delete?"),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text('cancel'),
+                          ),
+                          TextButton(
+                            onPressed: () async {
+                              context.read<DeletePostBloc>().add(
+                                  DeletePostfromProfileEvent(
+                                      postid: widget.postid!));
+                              deletePost(widget.postid!);
+                              context
+                                  .read<UserProfileBloc>()
+                                  .add(UserProfileInitialDetailsFetchEvent());
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text(
+                              'delete',
+                              style: TextStyle(color: kred),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
                   },
                 ),
               );

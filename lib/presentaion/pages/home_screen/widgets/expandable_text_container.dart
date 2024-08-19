@@ -16,6 +16,8 @@ class ExpandableTextContainer extends StatefulWidget {
       : super(key: key);
 
   @override
+
+  // ignore: library_private_types_in_public_api
   _ExpandableTextContainerState createState() =>
       _ExpandableTextContainerState();
 }
@@ -35,7 +37,7 @@ class _ExpandableTextContainerState extends State<ExpandableTextContainer> {
         padding: const EdgeInsets.only(
           left: 20,
           right: 20,
-          //bottom: 10,
+          // bottom: 10,
         ),
         width: widget.width,
         decoration: BoxDecoration(

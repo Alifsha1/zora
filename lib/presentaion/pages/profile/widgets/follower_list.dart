@@ -7,12 +7,12 @@ import 'package:zora/presentaion/Widgets/normal_bond_titles.dart';
 import 'package:zora/presentaion/pages/profile/widgets/followers_view.dart';
 
 class FollowerList extends StatefulWidget {
- // final String currentuserid;
+  final String userid;
   // final UserModel currentuserModel;
    final UserModel userModel;
   const FollowerList(
       {super.key,
-      required this.userModel,
+      required this.userModel, required this.userid,
      // required this.currentuserid,
       //required this.currentuserModel,
       });
@@ -42,6 +42,7 @@ class _FollowerListState extends State<FollowerList> {
           backgroundColor: maincolor,
         ),
         body: FollowersViewList(
+          userid: widget.userid,
           userModel: widget.userModel,
           // currentuserModel: widget.currentuserModel,
           // currentuserid: widget.currentuserid,
