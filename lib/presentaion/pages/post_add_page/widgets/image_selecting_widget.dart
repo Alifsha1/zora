@@ -7,7 +7,7 @@ class SelectImageWidget extends StatelessWidget {
   final double mediawidth;
   final Function()? ontap;
   final List selectedAssetList;
-   SelectImageWidget({super.key, this.ontap,required this.mediaheight,required this.mediawidth,required this.selectedAssetList});
+   const SelectImageWidget({super.key, this.ontap,required this.mediaheight,required this.mediawidth,required this.selectedAssetList});
 
  
   @override

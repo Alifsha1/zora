@@ -1,4 +1,5 @@
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
+// ignore: unnecessary_import
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
@@ -59,7 +60,7 @@ class _ChatBottomWidgetState extends State<ChatBottomWidget> {
                             show = !show;
                           });
                         },
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.emoji_emotions,
                           color: kblue,
                         )),
@@ -67,7 +68,7 @@ class _ChatBottomWidgetState extends State<ChatBottomWidget> {
                         child: TextField(
                       controller: messagecontroller,
                       focusNode: focusNode,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                           hintText: 'Type Something...',
                           hintStyle: TextStyle(color: Colors.blueAccent),
                           border: InputBorder.none),
@@ -91,7 +92,7 @@ class _ChatBottomWidgetState extends State<ChatBottomWidget> {
                                 message: messagecontroller.text);
                             messagecontroller.clear();
                           },
-                          child: Icon(
+                          child: const Icon(
                             TablerIcons.send,
                             color: kwhite,
                           ),
@@ -112,7 +113,7 @@ class _ChatBottomWidgetState extends State<ChatBottomWidget> {
 
   Widget emojiselect() {
     return EmojiPicker(
-        config: Config(
+        config: const Config(
           height: 256,
           checkPlatformCompatibility: true,
           emojiViewConfig: EmojiViewConfig(
@@ -131,37 +132,5 @@ class _ChatBottomWidgetState extends State<ChatBottomWidget> {
         });
   }
 
-  // Widget emojiWidget() {
-  //   return EmojiPicker(
-  //     config: Config(
-  //       categoryViewConfig: CategoryViewConfig(
-  //         tabBarHeight: 40,
-  //         tabIndicatorAnimDuration: const Duration(milliseconds: 500),
-  //         backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-  //       ),
-  //       bottomActionBarConfig: const BottomActionBarConfig(
-  //         showBackspaceButton: false,
-  //         showSearchViewButton: false,
-  //       ),
-  //       emojiViewConfig: EmojiViewConfig(
-  //         columns: 8,
-  //         emojiSizeMax: 25,
-  //         backgroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
-  //         noRecents: Text(
-  //           'No Recents',
-  //           style: TextStyle(
-  //             fontSize: 16,
-  //             color: Theme.of(context).colorScheme.onSecondary,
-  //           ),
-  //         ),
-  //       ),
-  //     ),
-  //     onEmojiSelected: (category, emoji) {
-  //       setState(() {
-  //         // messageController.text = messageController.text + emoji.emoji;
-  //         // sendButton = true;
-  //       });
-  //     },
-  //   );
-  // }
+  
 }

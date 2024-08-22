@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_import
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:zora/core/constants/contants.dart';
@@ -41,11 +43,11 @@ class OwnMessageCard extends StatelessWidget {
               vertical: 10,
               horizontal: 20,
             ),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               // color: Theme.of(context).colorScheme.onPrimary,
               color: kblue,
               //  boxShadow: kBoxShadow,
-              borderRadius: const BorderRadius.only(
+              borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(10),
                 bottomLeft: Radius.circular(10),
                 bottomRight: Radius.circular(10),

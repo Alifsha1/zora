@@ -28,6 +28,7 @@ class ReplyCard extends StatelessWidget {
               vertical: 10,
               horizontal: 15,
             ),
+            // ignore: prefer_const_constructors
             decoration: BoxDecoration(
               color: kwhite,
               //boxShadow: kBoxShadow,

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:zora/core/style/colors/colors.dart';
 
@@ -39,7 +38,7 @@ class _PopUpMenuWidgetButtonState extends State<PopUpMenuWidgetButton> {
                     value: widget.buttontxt,
                     child:  Text(
                       widget.buttontxt,
-                      style: TextStyle(color: kwhite),
+                      style: const TextStyle(color: kwhite),
                     ),
                   ),
                   
@@ -48,7 +47,7 @@ class _PopUpMenuWidgetButtonState extends State<PopUpMenuWidgetButton> {
                     value: widget.txt2,
                     child:  Text(
                       widget.txt2?? '',
-                      style: TextStyle(color: kwhite),
+                      style: const TextStyle(color: kwhite),
                     ),
                   ),
                 ];

@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zora/core/style/colors/colors.dart';
@@ -34,12 +36,12 @@ class _MessageScreenListState extends State<MessageScreenList> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: maincolor,
-          title: NormalBondTitles(
+          title: const NormalBondTitles(
             titles: 'Messages',
             color: kblack,
           ),
         ),
-        body: Messagesviewlist(),
+        body: const Messagesviewlist(),
       ),
     );
   }

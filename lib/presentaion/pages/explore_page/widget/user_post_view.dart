@@ -159,7 +159,7 @@ class _UserPostViewWidgetState extends State<UserPostViewWidget> {
                 );
               });
         }
-        return Center(
+        return const Center(
           child: CircularProgressIndicator(),
         );
       }),

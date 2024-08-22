@@ -71,7 +71,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                         //   tabController: tabController,
                         // ),
                         kheight5,
-                        NormalBondTitles(titles: 'Posts'),
+                        const NormalBondTitles(titles: 'Posts'),
                         PostGridView(userModel: stateA.user)
                         // UserPostsGridView(userModel: stateA.user,posts: stateA.posts,)
                         // CustomTabView(
@@ -87,7 +87,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                     mediaheight: mediaheight, mediawidth: mediawidth);
               }
             }
-            return SizedBox();
+            return const SizedBox();
           },
         ),
       ),

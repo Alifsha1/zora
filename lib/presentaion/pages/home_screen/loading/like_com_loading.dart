@@ -1,4 +1,6 @@
 
+// ignore_for_file: unnecessary_import
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:zora/core/constants/contants.dart';
@@ -41,9 +43,9 @@ class _LikeComLoadingState extends State<LikeComLoading> {
                             color: kwhite,
                           ),
                         ),
-                        Text(
+                        const Text(
                           'No Likes',
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: kwhite,
                             fontSize: 15,
                             fontWeight: FontWeight.bold,

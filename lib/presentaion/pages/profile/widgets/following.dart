@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:zora/core/style/colors/colors.dart';
 import 'package:zora/data/models/user_model/user_model.dart';
@@ -27,7 +26,7 @@ class _FollowingListState extends State<FollowingList> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: NormalBondTitles(
+          title: const NormalBondTitles(
             titles: 'Following',
           ),
           centerTitle: true,

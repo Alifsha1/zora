@@ -14,13 +14,13 @@ class _ChatLoadingState extends State<ChatLoading> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-           body: Container(
+           body: SizedBox(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         child: Builder(
           builder: (context) {
             return Stack(children: [
-              Container(
+              SizedBox(
                 height: MediaQuery.of(context).size.height - 140,
                 child: ListView.builder(
                   itemCount: 10,

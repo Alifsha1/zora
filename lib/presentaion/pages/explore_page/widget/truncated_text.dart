@@ -23,7 +23,7 @@ class Truncatedtext extends StatelessWidget {
         ),
         children: isLongText
             ? [
-                TextSpan(
+                const TextSpan(
                   text: '...',
                   style: TextStyle(
                     color: kgrey,

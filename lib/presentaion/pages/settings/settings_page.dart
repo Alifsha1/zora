@@ -27,7 +27,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: NormalBondTitles(titles: 'Settings'),
+          title: const NormalBondTitles(titles: 'Settings'),
           backgroundColor: maincolor,
         ),
         body: Padding(
@@ -37,7 +37,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               CustomSettingButton(
                 mediaheight: mediawidth,
                 onPressed: () {
-                  navigatorPush(AboutUsPage(), context);
+                  navigatorPush(const AboutUsPage(), context);
                 },
                 mediawidth: mediawidth,
                 buttontext: 'About Us',
@@ -46,7 +46,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               CustomSettingButton(
                 mediaheight: mediawidth,
                 onPressed: () {
-                  navigatorPush(PrivacyAndPolicy(), context);
+                  navigatorPush(const PrivacyAndPolicy(), context);
                 },
                 mediawidth: mediawidth,
                 buttontext: 'Privacy & policy',
@@ -55,7 +55,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               CustomSettingButton(
                 mediaheight: mediawidth,
                 onPressed: () {
-                    navigatorPush(HelpScreen(), context);
+                    navigatorPush(const HelpScreen(), context);
                 },
                 mediawidth: mediawidth,
                 buttontext: 'Help',
@@ -98,9 +98,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           ));
                 },
               ),
-              Spacer(),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 80),
+              const Spacer(),
+              const Padding(
+                padding: EdgeInsets.only(bottom: 80),
                 child: SocialsIcons(),
               ),
             ],

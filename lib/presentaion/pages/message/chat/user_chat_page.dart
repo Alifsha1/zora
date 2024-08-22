@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_import
+
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -150,7 +152,7 @@ class _UserChatPageState extends State<UserChatPage> {
   //  );
 }
 
-bool _hasMessages(
+bool hasMessages(
     String currentUser, String otherUser, List<ChatModel> messages) {
   return messages.any((message) =>
       (message.sender.username == currentUser &&

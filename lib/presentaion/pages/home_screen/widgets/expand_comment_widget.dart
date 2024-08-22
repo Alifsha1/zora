@@ -47,7 +47,7 @@ class _ExpandCommentWidgetState extends State<ExpandCommentWidget> {
                 expand
                     ? Text(
                         widget.comment.trim(),
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: kblack,
                           fontSize: 15,
                           //  fontWeight: FontWeight.bold,
@@ -60,7 +60,7 @@ class _ExpandCommentWidgetState extends State<ExpandCommentWidget> {
                               text: widget.comment.length > 8
                                   ? widget.comment.substring(0, 8)
                                   : widget.comment,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: kblack,
                                 fontSize: 15,
                                 //  fontWeight: FontWeight.bold,

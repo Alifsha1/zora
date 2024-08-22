@@ -9,7 +9,6 @@ import 'package:zora/presentaion/Widgets/elevated_button.dart';
 import 'package:zora/presentaion/Widgets/text_form_field.dart';
 import 'package:zora/presentaion/Widgets/zora.dart';
 import 'package:zora/presentaion/bloc/sign_up_bloc/sign_up_bloc_bloc.dart';
-import 'package:zora/presentaion/pages/admin_authentication/admin_login.dart';
 import 'package:zora/presentaion/pages/otp_verification/verification_page.dart';
 import 'package:zora/presentaion/pages/sign_up/widgets/login_widget.dart';
 

@@ -25,9 +25,9 @@ class _MessageListLoadingState extends State<MessageListLoading> {
         gradient: shimmerGradient,
         child: Container(
           color: kgreyshimmer,
-          child: Text(
+          child: const Text(
            '',
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 15,
               height: 1.5,
             ),

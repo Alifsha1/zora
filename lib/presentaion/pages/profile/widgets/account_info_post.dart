@@ -48,7 +48,7 @@ class AccountInfoPost extends StatelessWidget {
                     color: kblack,
                   ),
                 ),
-                Text(
+                const Text(
                   'followers',
                   style: TextStyle(
                     fontSize: 20,
@@ -88,7 +88,7 @@ class AccountInfoPost extends StatelessWidget {
                     color: kblack,
                   ),
                 ),
-                Text(
+                const Text(
                   'following',
                   style: TextStyle(
                     fontSize: 20,
