@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:otp_text_field/otp_field.dart';
@@ -100,15 +102,17 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                 if (state is UsernameExistsErrorState) {
                   debugPrint('Username already exixts');
 
-                  customSnackbar(context, "username already exists",Colors.red);
+                  customSnackbar(
+                      context, "username already exists", Colors.red);
                 }
                 if (state is EmailExistsErrorState) {
                   debugPrint('Email already exists');
-                  customSnackbar(context, "Email already exists",Colors.red);
+                  customSnackbar(context, "Email already exists", Colors.red);
                 }
                 if (state is PhonenoExistsErrorState) {
                   debugPrint('Phoneno already exists');
-                  customSnackbar(context, "Phone number already exists",Colors.red);
+                  customSnackbar(
+                      context, "Phone number already exists", Colors.red);
                 }
               },
               builder: (context, state) {
@@ -126,7 +130,10 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                         fieldStyle: FieldStyle.box,
                         onChanged: (value) {},
                         onCompleted: (pin) {
-                          otp = pin;
+                          log('otpp in filed $otp and pin $pin');
+                          setState(() {
+                            otp = pin;
+                          });
                         },
                       ),
                     ],
@@ -161,7 +168,6 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
             ),
             signUpButton(
                 formKey,
-                otp,
                 accountType,
                 widget.username,
                 widget.password,
@@ -175,9 +181,9 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
     );
   }
 
-  static Widget signUpButton(
+  Widget signUpButton(
       GlobalKey<FormState> formKey,
-      String? otp,
+
       String? accountType,
       String? username,
       String? password,
@@ -199,6 +205,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
             phonenumber: int.parse(phoneNo ?? '0'),
             otp: otp,
           );
+        
           context.read<SignUpBlocBloc>().add(UserSignedEvent(user: user));
         }
       },

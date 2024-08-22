@@ -1,4 +1,3 @@
-import 'package:zora/data/models/user_model/user_profile_model.dart';
 import 'package:zora/domain/repo/user_repo/user.dart';
 
 class UserUsecase {

@@ -75,7 +75,6 @@ class AuthDatasource{
       debugPrint('user login status code: ${response.statusCode}');
       debugPrint('user login : ${response.body}');
       var jsonresponse = jsonDecode(response.body);
-      print(jsonresponse['error']);
       if (response.statusCode == 201) {
         await UserAuthStatus.saveUserStatus(true);
         await UserToken.saveToken(jsonresponse['token']);

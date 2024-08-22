@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:zora/core/constants/contants.dart';
@@ -6,7 +5,7 @@ import 'package:zora/core/style/colors/colors.dart';
 import 'package:zora/presentaion/Widgets/elevated_button.dart';
 import 'package:zora/presentaion/Widgets/normal_bond_titles.dart';
 
-final Uri _url = Uri.parse(
+final Uri url = Uri.parse(
     'https://mail.google.com/mail/u/0/#inbox?compose=CllgCJqXxrhHJPMbdqBCfSddTFkqgcbtxGMQHjPCrtkLqvRCbdgWVfLMrbXZNPrsqtTnBPFNtnV');
 
 class HelpScreen extends StatelessWidget {
@@ -14,7 +13,6 @@ class HelpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mediaheight = MediaQuery.of(context).size.height;
     final mediawidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
@@ -27,9 +25,9 @@ class HelpScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            BoldTitles(titles: 'Report a Problem?', fontsize: 20),
+            const BoldTitles(titles: 'Report a Problem?', fontsize: 20),
             kheight10,
-            NormalBondTitles(
+            const NormalBondTitles(
               titles: 'Send to this',
               color: kblack,
             ),

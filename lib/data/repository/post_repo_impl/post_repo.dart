@@ -6,7 +6,6 @@ import 'package:http/http.dart' as http;
 import 'package:photo_manager/photo_manager.dart';
 import 'package:zora/core/utils/api_endpoints.dart';
 import 'package:zora/data/models/post_model/post_model.dart';
-import 'package:zora/data/models/user_model/user_model.dart';
 import 'package:zora/data/service/shared_preferences/shared_preference.dart';
 import 'package:zora/data/repository/cloud_repo_impl/cloud_repo.dart';
 

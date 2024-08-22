@@ -1,7 +1,5 @@
 import 'package:card_swiper/card_swiper.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zora/core/navigators/navigators.dart';
 import 'package:zora/core/style/colors/colors.dart';
@@ -15,7 +13,6 @@ import 'package:zora/presentaion/pages/home_screen/sections/like_com_sec.dart';
 import 'package:zora/presentaion/pages/home_screen/sections/pop_up_menu_section.dart';
 import 'package:zora/presentaion/pages/nav_bar/nav_bar.dart';
 import 'package:zora/presentaion/pages/profile/widgets/image_preview.dart';
-import 'package:zora/presentaion/pages/user_post_images_showing/widget/pop_up_menu_profile.dart';
 import 'package:zora/presentaion/pages/user_profile/user_profile.dart';
 import 'package:zora/presentaion/pages/user_saved_postimage/widgets/user_by_id.dart';
 

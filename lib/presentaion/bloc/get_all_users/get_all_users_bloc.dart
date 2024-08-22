@@ -1,10 +1,11 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'dart:async';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:zora/data/models/user_model/user_model.dart';
-import 'package:zora/data/repository/all_users_repo_imp/all_users_repo.dart';
 import 'package:zora/domain/usecase/all_users_usecase/all_users_usecase.dart';
 
 part 'get_all_users_event.dart';

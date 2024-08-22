@@ -200,33 +200,11 @@ class _SignUpPageState extends State<SignUpPage> {
                         ],
                       ),
                       kheight10,
-                      Buttonelevated(
-                        mediawidth: mediawidth,
-                        buttontext: 'Sign up with google',
-                      ),
+                    
                       kheight10,
                       LoginWidget(),
                       kheight10,
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => AdminLogin()));
-                            },
-                            child: Text(
-                              'Admin?',
-                              style: TextStyle(
-                                  color: Colors.blue,
-                                  fontWeight: FontWeight.normal,
-                                  fontFamily: "Quick_sand"),
-                            ),
-                          ),
-                        ],
-                      ),
+                     
                     ],
                   ),
                 )

@@ -1,5 +1,4 @@
 import 'package:zora/data/models/post_model/post_model.dart';
-import 'package:zora/data/models/user_model/user_entity.dart';
 
 class UserModel  {
   final String? id;

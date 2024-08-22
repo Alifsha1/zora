@@ -7,7 +7,6 @@ import 'package:flutter/widgets.dart';
 import 'package:http/http.dart';
 import 'package:zora/data/models/post_model/post_model.dart';
 import 'package:zora/data/models/user_model/user_model.dart';
-import 'package:zora/data/repository/user_repo_impl/user_repo.dart';
 import 'package:zora/domain/usecase/user_usecases/user_usecase.dart';
 
 part 'user_profile_event.dart';

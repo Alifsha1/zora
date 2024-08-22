@@ -46,14 +46,12 @@ class ShowingProfileTileLoading extends StatelessWidget {
             ),
           ),
           Positioned.fill(
-            bottom: mediaheight * .16,
-            right: mediawidth * .27,
             child: Shimmer(
               gradient: shimmerGradient,
               child: Align(
                 alignment: Alignment.center,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 40),
+                  padding: const EdgeInsets.only(top: 20),
                   child: CircleAvatar(
                     radius: 70,
                     backgroundColor: Colors.white,

@@ -7,6 +7,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:zora/core/navigators/navigators.dart';
 import 'package:zora/presentaion/bloc/get_all_post/get_all_post_bloc.dart';
 import 'package:zora/presentaion/bloc/saved_posts/saved_posts_bloc.dart';
+import 'package:zora/presentaion/pages/explore_page/loading/explore_loading.dart';
 import 'package:zora/presentaion/pages/explore_page/widget/user_post_view.dart';
 
 class ExploreGridView extends StatefulWidget {
@@ -33,9 +34,7 @@ class _ExploreGridViewState extends State<ExploreGridView> {
     return BlocBuilder<GetAllPostBloc, GetAllPostState>(
         builder: (context, state) {
       if (state is GetAllPostLoadingState) {
-        return Center(
-          child: CircularProgressIndicator(),
-        );
+        return const ExploreLoading();
       }
       if (state is GetAllPostSuccessState) {
         log(state.posts.length.toString());
@@ -52,7 +51,6 @@ class _ExploreGridViewState extends State<ExploreGridView> {
                       UserPostViewWidget(
                           mediaheight: mediaheight,
                           mediawidth: mediawidth,
-                          
                           currentindex: index),
                       context);
                 },
@@ -72,11 +70,10 @@ class _ExploreGridViewState extends State<ExploreGridView> {
               mainAxisCellCount: 1,
               child: GestureDetector(
                 onTap: () {
-                   navigatorPush(
+                  navigatorPush(
                       UserPostViewWidget(
                           mediaheight: mediaheight,
                           mediawidth: mediawidth,
-                          
                           currentindex: index),
                       context);
                 },
@@ -96,11 +93,10 @@ class _ExploreGridViewState extends State<ExploreGridView> {
               mainAxisCellCount: 1,
               child: GestureDetector(
                 onTap: () {
-                   navigatorPush(
+                  navigatorPush(
                       UserPostViewWidget(
                           mediaheight: mediaheight,
                           mediawidth: mediawidth,
-                          
                           currentindex: index),
                       context);
                 },
@@ -120,11 +116,10 @@ class _ExploreGridViewState extends State<ExploreGridView> {
               mainAxisCellCount: 1,
               child: GestureDetector(
                 onTap: () {
-                   navigatorPush(
+                  navigatorPush(
                       UserPostViewWidget(
                           mediaheight: mediaheight,
                           mediawidth: mediawidth,
-                          
                           currentindex: index),
                       context);
                 },
@@ -144,11 +139,10 @@ class _ExploreGridViewState extends State<ExploreGridView> {
               mainAxisCellCount: 1,
               child: GestureDetector(
                 onTap: () {
-                   navigatorPush(
+                  navigatorPush(
                       UserPostViewWidget(
                           mediaheight: mediaheight,
                           mediawidth: mediawidth,
-                          
                           currentindex: index),
                       context);
                 },
@@ -168,11 +162,10 @@ class _ExploreGridViewState extends State<ExploreGridView> {
               mainAxisCellCount: 2,
               child: GestureDetector(
                 onTap: () {
-                   navigatorPush(
+                  navigatorPush(
                       UserPostViewWidget(
                           mediaheight: mediaheight,
                           mediawidth: mediawidth,
-                          
                           currentindex: index),
                       context);
                 },
@@ -192,11 +185,10 @@ class _ExploreGridViewState extends State<ExploreGridView> {
               mainAxisCellCount: 1,
               child: GestureDetector(
                 onTap: () {
-                   navigatorPush(
+                  navigatorPush(
                       UserPostViewWidget(
                           mediaheight: mediaheight,
                           mediawidth: mediawidth,
-                          
                           currentindex: index),
                       context);
                 },
@@ -216,11 +208,10 @@ class _ExploreGridViewState extends State<ExploreGridView> {
               mainAxisCellCount: 1,
               child: GestureDetector(
                 onTap: () {
-                   navigatorPush(
+                  navigatorPush(
                       UserPostViewWidget(
                           mediaheight: mediaheight,
                           mediawidth: mediawidth,
-                          
                           currentindex: index),
                       context);
                 },
@@ -244,9 +235,7 @@ class _ExploreGridViewState extends State<ExploreGridView> {
           children: tiles,
         );
       } else {
-        return Center(
-          child: CircularProgressIndicator(),
-        );
+        return const ExploreLoading();
       }
     });
   }

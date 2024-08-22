@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,9 +7,9 @@ import 'package:zora/data/models/user_model/user_model.dart';
 import 'package:zora/presentaion/bloc/edit_profile/edit_profile_bloc.dart';
 import 'package:zora/presentaion/bloc/image_picker/image_picker_bloc.dart';
 import 'package:zora/presentaion/pages/edit_profile/widget/edit_profile_text_field.dart';
-import 'package:zora/presentaion/pages/edit_profile/widget/functions.dart';
 import 'package:zora/presentaion/pages/nav_bar/nav_bar.dart';
 
+// ignore: must_be_immutable
 class EditProfileWidget extends StatefulWidget {
    EditProfileWidget({
     super.key,

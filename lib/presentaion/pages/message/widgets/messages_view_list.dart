@@ -1,3 +1,4 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,7 +7,6 @@ import 'package:zora/data/models/chat_model/chat_model.dart';
 import 'package:zora/presentaion/Widgets/normal_bond_titles.dart';
 import 'package:zora/presentaion/bloc/all_chat_with_me/all_chat_with_me_bloc.dart';
 import 'package:zora/presentaion/bloc/message_list/message_list_bloc.dart';
-import 'package:zora/presentaion/pages/message/widgets/last_message.dart';
 import 'package:zora/presentaion/pages/message/widgets/loading/message_list_loading.dart';
 import 'package:zora/presentaion/pages/message/widgets/message_user_listtile.dart';
 

@@ -33,6 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
             leading: const SizedBox(),
             backgroundColor: const Color.fromARGB(255, 228, 246, 246),
             centerTitle: true,
+            // floating: true,
             title: const MainHeading(heading: 'Zora...'),
             expandedHeight: 70,
             actions: [

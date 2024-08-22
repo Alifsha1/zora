@@ -18,7 +18,7 @@ class _PrivacyAndPolicyState extends State<PrivacyAndPolicy> {
     _controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..loadRequest(Uri.parse(
-          'https://www.termsfeed.com/live/fa63b721-d3af-417e-913f-119b05a892a5'));
+          'https://www.termsfeed.com/live/00bf158e-f7d7-462a-b180-e5b9ad0d7cac'));
   }
 
   @override

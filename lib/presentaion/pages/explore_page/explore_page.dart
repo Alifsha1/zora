@@ -32,6 +32,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
           SliverAppBar(
             backgroundColor: const Color.fromARGB(255, 228, 246, 246),
             centerTitle: true,
+            automaticallyImplyLeading: false,
             title: PostCustomTexTField(
               onTap: () {
                 context

@@ -1,11 +1,7 @@
-import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:zora/core/utils/api_endpoints.dart';
 import 'package:zora/data/datasourse/remote/auth_datasource/auth_datasource.dart';
 import 'package:zora/data/models/user_model/user_model.dart';
-import 'package:zora/data/service/shared_preferences/shared_preference.dart';
 import 'package:zora/domain/repo/auth_repo/auth.dart';
 
 class AuthrepoImpl implements AuthRepo {
